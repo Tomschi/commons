@@ -10,6 +10,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commons-api</artifactId>
+    <artifactId>commons-jpa</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.tomschi</groupId>
+            <artifactId>commons-api</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
