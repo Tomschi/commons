@@ -8,6 +8,9 @@
 *.war
 *.ear
 
+# maven
+target
+
 # idea files
 .idea
 *.iml
