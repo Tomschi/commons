@@ -1,6 +1,4 @@
-package com.github.tomschi.commons.jpa.dbo;
-
-import com.github.tomschi.commons.api.dbo.SurrogateKeyDbo;
+package com.github.tomschi.commons.api.dbo;
 
 /**
  * The abstract class {@link AbstractSurrogateKeyDbo} can be used

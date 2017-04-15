@@ -1,6 +1,4 @@
-package com.github.tomschi.commons.jpa.dbo;
-
-import com.github.tomschi.commons.api.dbo.BusinessKeyDbo;
+package com.github.tomschi.commons.api.dbo;
 
 /**
  * The abstract class {@link AbstractBusinessDbo} can be used

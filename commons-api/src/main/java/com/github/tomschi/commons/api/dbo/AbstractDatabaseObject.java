@@ -1,6 +1,4 @@
-package com.github.tomschi.commons.jpa.dbo;
-
-import com.github.tomschi.commons.api.dbo.DatabaseObject;
+package com.github.tomschi.commons.api.dbo;
 
 /**
  * The abstract class {@link AbstractDatabaseObject} can be used

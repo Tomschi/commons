@@ -9,7 +9,7 @@ package com.github.tomschi.commons.api.dbo;
  * @since 0.1.0
  * @author Tomschi
  */
-public interface BusinessKeyDbo<T> extends KeyDbo<T> {
+public interface BusinessKeyDbo<T> extends KeyDatabaseObject<T> {
 
     /**
      * Getter for the business key.

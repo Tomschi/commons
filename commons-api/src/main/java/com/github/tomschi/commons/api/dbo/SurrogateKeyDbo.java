@@ -8,7 +8,7 @@ package com.github.tomschi.commons.api.dbo;
  * @since 0.1.0
  * @author Tomschi
  */
-public interface SurrogateKeyDbo extends KeyDbo<Long> {
+public interface SurrogateKeyDbo extends KeyDatabaseObject<Long> {
 
     /**
      * The getter of the surrogate key.
