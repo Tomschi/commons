@@ -1,7 +1,7 @@
 package com.github.tomschi.commons.api.dbo;
 
 /**
- * The abstract class {@link AbstractBusinessDbo} can be used
+ * The abstract class {@link AbstractBusinessKeyDbo} can be used
  * for database objects with a business key as primary key.
  * This implementation allows a not null primary key only.
  * This abstract class overrides the equals and hashcode methods to
@@ -10,7 +10,7 @@ package com.github.tomschi.commons.api.dbo;
  * @since 0.1.0
  * @author Tomschi
  */
-public abstract class AbstractBusinessDbo<T> extends AbstractDatabaseObject implements BusinessKeyDbo<T> {
+public abstract class AbstractBusinessKeyDbo<T> extends AbstractDatabaseObject implements BusinessKeyDbo<T> {
 
     private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public abstract class AbstractBusinessDbo<T> extends AbstractDatabaseObject impl
      *
      * <ul>
      *     <li>The objects are the same: <code>this == obj</code></li>
-     *     <li>The other object is also an instance of {@link AbstractBusinessDbo}</li>
+     *     <li>The other object is also an instance of {@link AbstractBusinessKeyDbo}</li>
      *     <li>The surrogate key of both objects are the same</li>
      * </ul>
      *
@@ -67,8 +67,8 @@ public abstract class AbstractBusinessDbo<T> extends AbstractDatabaseObject impl
         if (this == obj) return true;
         businessKeyNotNull();
 
-        if (obj instanceof AbstractBusinessDbo) {
-            AbstractBusinessDbo<?> other = (AbstractBusinessDbo<?>) obj;
+        if (obj instanceof AbstractBusinessKeyDbo) {
+            AbstractBusinessKeyDbo<?> other = (AbstractBusinessKeyDbo<?>) obj;
             return getBusinessKey().equals(other.getBusinessKey());
         }
 

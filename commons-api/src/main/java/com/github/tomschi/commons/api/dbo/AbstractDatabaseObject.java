@@ -7,7 +7,7 @@ package com.github.tomschi.commons.api.dbo;
  * @since 0.1.0
  * @author Tomschi
  */
-public class AbstractDatabaseObject implements DatabaseObject {
+public abstract class AbstractDatabaseObject implements DatabaseObject {
 
     private static final long serialVersionUID = 1L;
 
