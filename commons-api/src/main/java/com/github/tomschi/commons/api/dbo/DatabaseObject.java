@@ -3,7 +3,7 @@ package com.github.tomschi.commons.api.dbo;
 import java.io.Serializable;
 
 /**
- * The {@link DatabaseObject} is the base interface for
+ * The interface {@link DatabaseObject} is the base interface for
  * all database objects.
  *
  * @since 0.1.0

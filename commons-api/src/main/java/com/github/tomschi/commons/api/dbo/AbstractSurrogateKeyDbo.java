@@ -4,14 +4,14 @@ package com.github.tomschi.commons.api.dbo;
  * The abstract class {@link AbstractSurrogateKeyDbo} can be used
  * for database objects with a surrogate key as primary key.
  * This implementation allows a nullable primary key, because the
- * key is given, after the object is persisted.
+ * key is generated during the persistence operation.
  * This abstract class overrides the equals and hashcode methods to
- * check the primary key equality and not the java object equality.
+ * check the surrogate key equality and not the java object equality.
  *
- * @since 0.1.0
  * @author Tomschi
+ * @since 0.1.0
  */
-public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject implements SurrogateKeyDbo {
+public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject implements SurrogateKeyDbo, PrimaryKeyDbo<Long> {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,21 +40,13 @@ public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject imp
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isPersisted() {
-        return getSurrogateKey() != null;
-    }
-
-    /**
      * Checks if this object equals the given object. The objects
      * equals if:
-     *
+     * <p>
      * <ul>
-     *     <li>The objects are the same: <code>this == obj</code></li>
-     *     <li>The other object is also an instance of {@link AbstractSurrogateKeyDbo}</li>
-     *     <li>The surrogate key of both objects are the same</li>
+     * <li>The objects are the same: <code>this == obj</code></li>
+     * <li>The other object is also an instance of {@link AbstractSurrogateKeyDbo}</li>
+     * <li>The surrogate key of both objects are the same</li>
      * </ul>
      *
      * @param obj The object to equal.
@@ -67,7 +59,7 @@ public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject imp
 
         if (obj instanceof AbstractSurrogateKeyDbo) {
             AbstractSurrogateKeyDbo other = (AbstractSurrogateKeyDbo) obj;
-            if (isPersisted() && other.isPersisted()) {
+            if (getSurrogateKey() != null && other.getSurrogateKey() != null) {
                 return getSurrogateKey().equals(other.getSurrogateKey());
             }
         }
@@ -85,7 +77,7 @@ public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject imp
      */
     @Override
     public int hashCode() {
-        if (isPersisted()) {
+        if (getSurrogateKey() != null) {
             return getSurrogateKey().hashCode() * 13;
         }
         return super.hashCode();

@@ -5,12 +5,12 @@ package com.github.tomschi.commons.api.dbo;
  * for database objects with a business key as primary key.
  * This implementation allows a not null primary key only.
  * This abstract class overrides the equals and hashcode methods to
- * check the primary key equality and not the java object equality.
+ * check the business key equality and not the java object equality.
  *
- * @since 0.1.0
  * @author Tomschi
+ * @since 0.1.0
  */
-public abstract class AbstractBusinessKeyDbo<T> extends AbstractDatabaseObject implements BusinessKeyDbo<T> {
+public abstract class AbstractBusinessKeyDbo<T> extends AbstractDatabaseObject implements BusinessKeyDbo<T>, PrimaryKeyDbo<T> {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,11 +51,11 @@ public abstract class AbstractBusinessKeyDbo<T> extends AbstractDatabaseObject i
     /**
      * Checks if this object equals the given object. The objects
      * equals if:
-     *
+     * <p>
      * <ul>
-     *     <li>The objects are the same: <code>this == obj</code></li>
-     *     <li>The other object is also an instance of {@link AbstractBusinessKeyDbo}</li>
-     *     <li>The surrogate key of both objects are the same</li>
+     * <li>The objects are the same: <code>this == obj</code></li>
+     * <li>The other object is also an instance of {@link AbstractBusinessKeyDbo}</li>
+     * <li>The surrogate key of both objects are the same</li>
      * </ul>
      *
      * @param obj The object to equal.
