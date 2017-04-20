@@ -10,7 +10,7 @@ package com.github.tomschi.commons.api.dbo;
  * @author Tomschi
  * @since 0.1.0
  */
-public abstract class AbstractBusinessKeyDbo<T> extends AbstractDatabaseObject implements BusinessKeyDbo<T>, PrimaryKeyDbo<T> {
+public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, PrimaryKeyDbo<T> {
 
     private static final long serialVersionUID = 1L;
 

@@ -11,7 +11,7 @@ package com.github.tomschi.commons.api.dbo;
  * @author Tomschi
  * @since 0.1.0
  */
-public abstract class AbstractSurrogateKeyDbo extends AbstractDatabaseObject implements SurrogateKeyDbo, PrimaryKeyDbo<Long> {
+public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, PrimaryKeyDbo<Long> {
 
     private static final long serialVersionUID = 1L;
 
