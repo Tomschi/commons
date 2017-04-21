@@ -54,7 +54,7 @@ public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, Pr
      * <p>
      * <ul>
      * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object is also an instance of {@link AbstractBusinessKeyDbo}</li>
+     * <li>The other object has the same type</li>
      * <li>The surrogate key of both objects are the same</li>
      * </ul>
      *
@@ -67,7 +67,7 @@ public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, Pr
         if (this == obj) return true;
         businessKeyNotNull();
 
-        if (obj instanceof AbstractBusinessKeyDbo) {
+        if (obj != null && this.getClass().equals(obj.getClass())) {
             AbstractBusinessKeyDbo<?> other = (AbstractBusinessKeyDbo<?>) obj;
             return getBusinessKey().equals(other.getBusinessKey());
         }

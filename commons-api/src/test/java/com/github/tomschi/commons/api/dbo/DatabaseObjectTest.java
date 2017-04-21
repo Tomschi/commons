@@ -16,8 +16,12 @@ public class DatabaseObjectTest {
     private final TestBusinessKeyDbo1 businessKeyDbo11 = new TestBusinessKeyDbo1();
     private final TestBusinessKeyDbo1 businessKeyDbo12 = new TestBusinessKeyDbo1();
 
+    private final TestBusinessKeyDbo2 businessKeyDbo21 = new TestBusinessKeyDbo2();
+
     private final TestSurrogateKeyDbo1 surrogateKeyDbo11 = new TestSurrogateKeyDbo1();
     private final TestSurrogateKeyDbo1 surrogateKeyDbo12 = new TestSurrogateKeyDbo1();
+
+    private final TestSurrogateKeyDbo2 surrogateKeyDbo21 = new TestSurrogateKeyDbo2();
 
     @Test
     public void testDatabaseObjectEquals() {
@@ -51,6 +55,7 @@ public class DatabaseObjectTest {
     public void testBusinessKeyDboEquals() {
         businessKeyDbo11.setBusinessKey(1L);
         businessKeyDbo12.setBusinessKey(2L);
+        businessKeyDbo21.setBusinessKey(1L);
         surrogateKeyDbo11.setSurrogateKey(1L);
         surrogateKeyDbo12.setSurrogateKey(2L);
 
@@ -64,6 +69,7 @@ public class DatabaseObjectTest {
         assertTrue(businessKeyDbo11.equals(businessKeyDbo12));
         assertTrue(businessKeyDbo12.equals(businessKeyDbo11));
 
+        assertFalse(businessKeyDbo11.equals(businessKeyDbo21));
         assertFalse(businessKeyDbo11.equals(databaseObject1));
         assertFalse(businessKeyDbo11.equals(surrogateKeyDbo11));
     }
@@ -105,6 +111,7 @@ public class DatabaseObjectTest {
         businessKeyDbo12.setBusinessKey(2L);
         surrogateKeyDbo11.setSurrogateKey(1L);
         surrogateKeyDbo12.setSurrogateKey(2L);
+        surrogateKeyDbo21.setSurrogateKey(1L);
 
         assertTrue(surrogateKeyDbo11.equals(surrogateKeyDbo11));
         assertTrue(surrogateKeyDbo12.equals(surrogateKeyDbo12));
@@ -116,6 +123,7 @@ public class DatabaseObjectTest {
         assertTrue(surrogateKeyDbo11.equals(surrogateKeyDbo12));
         assertTrue(surrogateKeyDbo12.equals(surrogateKeyDbo11));
 
+        assertFalse(surrogateKeyDbo11.equals(surrogateKeyDbo21));
         assertFalse(surrogateKeyDbo11.equals(databaseObject1));
         assertFalse(surrogateKeyDbo11.equals(businessKeyDbo11));
     }

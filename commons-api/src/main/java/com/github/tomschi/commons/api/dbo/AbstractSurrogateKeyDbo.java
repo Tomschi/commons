@@ -45,7 +45,7 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
      * <p>
      * <ul>
      * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object is also an instance of {@link AbstractSurrogateKeyDbo}</li>
+     * <li>The other object has the same type</li>
      * <li>The surrogate key of both objects are the same</li>
      * </ul>
      *
@@ -57,7 +57,7 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
     public boolean equals(Object obj) {
         if (this == obj) return true;
 
-        if (obj instanceof AbstractSurrogateKeyDbo) {
+        if (obj != null && this.getClass().equals(obj.getClass())) {
             AbstractSurrogateKeyDbo other = (AbstractSurrogateKeyDbo) obj;
             if (getSurrogateKey() != null && other.getSurrogateKey() != null) {
                 return getSurrogateKey().equals(other.getSurrogateKey());
