@@ -13,18 +13,18 @@ public class DatabaseObjectTest {
     private final TestDatabaseObject databaseObject1 = new TestDatabaseObject();
     private final TestDatabaseObject databaseObject2 = new TestDatabaseObject();
 
-    private final TestBusinessKeyDbo businessKeyDbo1 = new TestBusinessKeyDbo();
-    private final TestBusinessKeyDbo businessKeyDbo2 = new TestBusinessKeyDbo();
+    private final TestBusinessKeyDbo1 businessKeyDbo11 = new TestBusinessKeyDbo1();
+    private final TestBusinessKeyDbo1 businessKeyDbo12 = new TestBusinessKeyDbo1();
 
-    private final TestSurrogateKeyDbo surrogateKeyDbo1 = new TestSurrogateKeyDbo();
-    private final TestSurrogateKeyDbo surrogateKeyDbo2 = new TestSurrogateKeyDbo();
+    private final TestSurrogateKeyDbo1 surrogateKeyDbo11 = new TestSurrogateKeyDbo1();
+    private final TestSurrogateKeyDbo1 surrogateKeyDbo12 = new TestSurrogateKeyDbo1();
 
     @Test
     public void testDatabaseObjectEquals() {
         assertTrue(databaseObject1.equals(databaseObject1));
         assertFalse(databaseObject1.equals(databaseObject2));
-        assertFalse(databaseObject1.equals(businessKeyDbo1));
-        assertFalse(databaseObject1.equals(surrogateKeyDbo1));
+        assertFalse(databaseObject1.equals(businessKeyDbo11));
+        assertFalse(databaseObject1.equals(surrogateKeyDbo11));
     }
 
     @Test
@@ -32,102 +32,102 @@ public class DatabaseObjectTest {
         assertEquals(databaseObject1.hashCode(), databaseObject1.hashCode());
         assertNotEquals(databaseObject1.hashCode(), databaseObject2.hashCode());
 
-        businessKeyDbo1.setBusinessKey(1L);
-        surrogateKeyDbo1.setSurrogateKey(null);
-        assertNotEquals(databaseObject1.hashCode(), businessKeyDbo1.hashCode());
-        assertNotEquals(databaseObject1.hashCode(), surrogateKeyDbo2.hashCode());
+        businessKeyDbo11.setBusinessKey(1L);
+        surrogateKeyDbo11.setSurrogateKey(null);
+        assertNotEquals(databaseObject1.hashCode(), businessKeyDbo11.hashCode());
+        assertNotEquals(databaseObject1.hashCode(), surrogateKeyDbo12.hashCode());
     }
 
     @Test
     public void testBusinessKeyObjectPrimaryKey() {
-        businessKeyDbo1.setBusinessKey(1L);
-        assertEquals(businessKeyDbo1.getPrimaryKey(), businessKeyDbo1.getBusinessKey());
+        businessKeyDbo11.setBusinessKey(1L);
+        assertEquals(businessKeyDbo11.getPrimaryKey(), businessKeyDbo11.getBusinessKey());
 
-        businessKeyDbo1.setPrimaryKey(2L);
-        assertEquals(businessKeyDbo1.getBusinessKey(), businessKeyDbo1.getPrimaryKey());
+        businessKeyDbo11.setPrimaryKey(2L);
+        assertEquals(businessKeyDbo11.getBusinessKey(), businessKeyDbo11.getPrimaryKey());
     }
 
     @Test
     public void testBusinessKeyDboEquals() {
-        businessKeyDbo1.setBusinessKey(1L);
-        businessKeyDbo2.setBusinessKey(2L);
-        surrogateKeyDbo1.setSurrogateKey(1L);
-        surrogateKeyDbo2.setSurrogateKey(2L);
+        businessKeyDbo11.setBusinessKey(1L);
+        businessKeyDbo12.setBusinessKey(2L);
+        surrogateKeyDbo11.setSurrogateKey(1L);
+        surrogateKeyDbo12.setSurrogateKey(2L);
 
-        assertTrue(businessKeyDbo1.equals(businessKeyDbo1));
-        assertTrue(businessKeyDbo2.equals(businessKeyDbo2));
-        assertFalse(businessKeyDbo1.equals(businessKeyDbo2));
-        assertFalse(businessKeyDbo2.equals(businessKeyDbo1));
-        assertFalse(businessKeyDbo1.equals(null));
+        assertTrue(businessKeyDbo11.equals(businessKeyDbo11));
+        assertTrue(businessKeyDbo12.equals(businessKeyDbo12));
+        assertFalse(businessKeyDbo11.equals(businessKeyDbo12));
+        assertFalse(businessKeyDbo12.equals(businessKeyDbo11));
+        assertFalse(businessKeyDbo11.equals(null));
 
-        businessKeyDbo2.setBusinessKey(1L);
-        assertTrue(businessKeyDbo1.equals(businessKeyDbo2));
-        assertTrue(businessKeyDbo2.equals(businessKeyDbo1));
+        businessKeyDbo12.setBusinessKey(1L);
+        assertTrue(businessKeyDbo11.equals(businessKeyDbo12));
+        assertTrue(businessKeyDbo12.equals(businessKeyDbo11));
 
-        assertFalse(businessKeyDbo1.equals(databaseObject1));
-        assertFalse(businessKeyDbo1.equals(surrogateKeyDbo1));
+        assertFalse(businessKeyDbo11.equals(databaseObject1));
+        assertFalse(businessKeyDbo11.equals(surrogateKeyDbo11));
     }
 
     @Test
     public void testBusinessKeyDboHashCode() {
-        businessKeyDbo1.setBusinessKey(1L);
-        businessKeyDbo2.setBusinessKey(2L);
-        assertNotEquals(businessKeyDbo1.hashCode(), businessKeyDbo2.hashCode());
+        businessKeyDbo11.setBusinessKey(1L);
+        businessKeyDbo12.setBusinessKey(2L);
+        assertNotEquals(businessKeyDbo11.hashCode(), businessKeyDbo12.hashCode());
 
-        businessKeyDbo2.setBusinessKey(1L);
-        assertEquals(businessKeyDbo1.hashCode(), businessKeyDbo2.hashCode());
+        businessKeyDbo12.setBusinessKey(1L);
+        assertEquals(businessKeyDbo11.hashCode(), businessKeyDbo12.hashCode());
     }
 
     @Test(expected = IllegalStateException.class)
     public void testBusinessKeyDboWithoutKeyEquals() {
-        businessKeyDbo1.setBusinessKey(null);
-        businessKeyDbo1.equals(businessKeyDbo2);
+        businessKeyDbo11.setBusinessKey(null);
+        businessKeyDbo11.equals(businessKeyDbo12);
     }
 
     @Test(expected = IllegalStateException.class)
     public void testBusinessKeyDboWithoutKeyHashCode() {
-        businessKeyDbo1.setBusinessKey(null);
-        businessKeyDbo1.hashCode();
+        businessKeyDbo11.setBusinessKey(null);
+        businessKeyDbo11.hashCode();
     }
 
     @Test
     public void testSurrogateKeyDboPrimaryKey() {
-        surrogateKeyDbo1.setSurrogateKey(1L);
-        assertEquals(surrogateKeyDbo1.getPrimaryKey(), surrogateKeyDbo1.getSurrogateKey());
+        surrogateKeyDbo11.setSurrogateKey(1L);
+        assertEquals(surrogateKeyDbo11.getPrimaryKey(), surrogateKeyDbo11.getSurrogateKey());
 
-        surrogateKeyDbo1.setPrimaryKey(2L);
-        assertEquals(surrogateKeyDbo1.getSurrogateKey(), surrogateKeyDbo1.getPrimaryKey());
+        surrogateKeyDbo11.setPrimaryKey(2L);
+        assertEquals(surrogateKeyDbo11.getSurrogateKey(), surrogateKeyDbo11.getPrimaryKey());
     }
 
     @Test
     public void testSurrogateKeyDboEquals() {
-        businessKeyDbo1.setBusinessKey(1L);
-        businessKeyDbo2.setBusinessKey(2L);
-        surrogateKeyDbo1.setSurrogateKey(1L);
-        surrogateKeyDbo2.setSurrogateKey(2L);
+        businessKeyDbo11.setBusinessKey(1L);
+        businessKeyDbo12.setBusinessKey(2L);
+        surrogateKeyDbo11.setSurrogateKey(1L);
+        surrogateKeyDbo12.setSurrogateKey(2L);
 
-        assertTrue(surrogateKeyDbo1.equals(surrogateKeyDbo1));
-        assertTrue(surrogateKeyDbo2.equals(surrogateKeyDbo2));
-        assertFalse(surrogateKeyDbo1.equals(surrogateKeyDbo2));
-        assertFalse(surrogateKeyDbo2.equals(surrogateKeyDbo1));
-        assertFalse(surrogateKeyDbo1.equals(null));
+        assertTrue(surrogateKeyDbo11.equals(surrogateKeyDbo11));
+        assertTrue(surrogateKeyDbo12.equals(surrogateKeyDbo12));
+        assertFalse(surrogateKeyDbo11.equals(surrogateKeyDbo12));
+        assertFalse(surrogateKeyDbo12.equals(surrogateKeyDbo11));
+        assertFalse(surrogateKeyDbo11.equals(null));
 
-        surrogateKeyDbo2.setSurrogateKey(1L);
-        assertTrue(surrogateKeyDbo1.equals(surrogateKeyDbo2));
-        assertTrue(surrogateKeyDbo2.equals(surrogateKeyDbo1));
+        surrogateKeyDbo12.setSurrogateKey(1L);
+        assertTrue(surrogateKeyDbo11.equals(surrogateKeyDbo12));
+        assertTrue(surrogateKeyDbo12.equals(surrogateKeyDbo11));
 
-        assertFalse(surrogateKeyDbo1.equals(databaseObject1));
-        assertFalse(surrogateKeyDbo1.equals(businessKeyDbo1));
+        assertFalse(surrogateKeyDbo11.equals(databaseObject1));
+        assertFalse(surrogateKeyDbo11.equals(businessKeyDbo11));
     }
 
     @Test
     public void testSurrogateKeyDboHashCode() {
-        surrogateKeyDbo1.setSurrogateKey(1L);
-        surrogateKeyDbo2.setSurrogateKey(2L);
-        assertNotEquals(surrogateKeyDbo1.hashCode(), surrogateKeyDbo2.hashCode());
+        surrogateKeyDbo11.setSurrogateKey(1L);
+        surrogateKeyDbo12.setSurrogateKey(2L);
+        assertNotEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo12.hashCode());
 
-        surrogateKeyDbo2.setSurrogateKey(1L);
-        assertEquals(surrogateKeyDbo1.hashCode(), surrogateKeyDbo2.hashCode());
+        surrogateKeyDbo12.setSurrogateKey(1L);
+        assertEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo12.hashCode());
     }
 
 }
