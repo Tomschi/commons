@@ -1,8 +1,8 @@
-package com.github.tomschi.commons.api.dto;
+package com.github.tomschi.commons.api.dto.rest;
 
 /**
- * The abstract class {@link AbstractIdentifiableDto} can be
- * used for data transfer objects with an identifier.
+ * The abstract class {@link AbstractIdentifiableRestDto} can be
+ * used for rest data transfer objects with an identifier.
  * This implementation allows a not null primary key only.
  * This abstract class overrides the equals and hashcode methods to
  * check the id equality and not the java object equality.
@@ -12,10 +12,16 @@ package com.github.tomschi.commons.api.dto;
  * @since 0.1.0
  * @author Tomschi
  */
-public abstract class AbstractIdentifiableDto<T> implements IdentifiableDto<T> {
+public abstract class AbstractIdentifiableRestDto<T> implements IdentifiableRestDto<T> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Checks if the id is not null, else an
+     * {@link IllegalStateException} is thrown.
+     *
+     * @throws IllegalStateException When id null.
+     */
     private void idNotNull() {
         if (getId() == null) throw new IllegalStateException("No id is defined.");
     }
@@ -26,7 +32,7 @@ public abstract class AbstractIdentifiableDto<T> implements IdentifiableDto<T> {
      * <p>
      * <ul>
      * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object is also an instance of {@link AbstractIdentifiableDto}</li>
+     * <li>The other object has the same type</li>
      * <li>The id of both objects are the same</li>
      * </ul>
      *
@@ -39,8 +45,8 @@ public abstract class AbstractIdentifiableDto<T> implements IdentifiableDto<T> {
         if (this == obj) return true;
         idNotNull();
 
-        if (obj instanceof AbstractIdentifiableDto) {
-            AbstractIdentifiableDto<?> other = (AbstractIdentifiableDto<?>) obj;
+        if (obj != null && this.getClass().equals(obj.getClass())) {
+            AbstractIdentifiableRestDto<?> other = (AbstractIdentifiableRestDto<?>) obj;
             return getId().equals(other.getId());
         }
 
@@ -56,7 +62,7 @@ public abstract class AbstractIdentifiableDto<T> implements IdentifiableDto<T> {
     @Override
     public int hashCode() {
         idNotNull();
-        return getId().hashCode() * 13;
+        return getId().hashCode() * 15;
     }
 
 }
