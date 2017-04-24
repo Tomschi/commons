@@ -1,5 +1,7 @@
 package com.github.tomschi.commons.api.dto.rest;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * The abstract class {@link AbstractIdentifiableRestDto} can be
  * used for rest data transfer objects with an identifier.
@@ -7,7 +9,7 @@ package com.github.tomschi.commons.api.dto.rest;
  * This abstract class overrides the equals and hashcode methods to
  * check the id equality and not the java object equality.
  *
- * @param <T> The type of the key.
+ * @param <T> The type of the id.
  *
  * @since 0.1.0
  * @author Tomschi
@@ -28,17 +30,18 @@ public abstract class AbstractIdentifiableRestDto<T> implements IdentifiableRest
 
     /**
      * Checks if this object equals the given object. The objects
-     * equals if:
-     * <p>
-     * <ul>
-     * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object has the same type</li>
-     * <li>The id of both objects are the same</li>
-     * </ul>
+     * are equal if the objects are the same <code>(this == obj)</code>
+     * or this class equals the given object class and the both
+     * id's are equal.
+     * <br/>
+     * If the id of this object is <code>null</code>,
+     * the method throws a {@link IllegalStateException}.
      *
      * @param obj The object to equal.
      * @return <code>True</code>, if this object equals the other,
      * else <code>false</code>.
+     *
+     * @throws IllegalStateException When id of this object is null.
      */
     @Override
     public boolean equals(Object obj) {
@@ -54,15 +57,21 @@ public abstract class AbstractIdentifiableRestDto<T> implements IdentifiableRest
     }
 
     /**
-     * Returns a hash value of this object. The id is used for hash computation
-     * So two objects with the same id has the same hash code.
+     * Returns a hash value of this object. The {@link Class#getName()}
+     * and id will be used for hash computation. If the id of this object is
+     * <code>null</code> the method throws a {@link IllegalStateException}.
      *
      * @return The hash code of this object.
+     *
+     * @throws IllegalStateException When id of this object is null.
      */
     @Override
     public int hashCode() {
         idNotNull();
-        return getId().hashCode() * 15;
+        return new HashCodeBuilder()
+                .append(getClass().getName())
+                .append(getId())
+                .toHashCode();
     }
 
 }
