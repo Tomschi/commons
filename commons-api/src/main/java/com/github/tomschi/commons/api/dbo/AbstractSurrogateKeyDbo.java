@@ -78,7 +78,7 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
     @Override
     public int hashCode() {
         if (getSurrogateKey() != null) {
-            return getSurrogateKey().hashCode() * 13;
+            return getSurrogateKey().hashCode() * 14;
         }
         return super.hashCode();
     }
