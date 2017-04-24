@@ -77,9 +77,9 @@ public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, Pr
     }
 
     /**
-     * Returns a hash value of this object. The business key is used
-     * for hash computation. If the business key of this object is
-     * <code>null</code> the method throws a {@link IllegalStateException}.
+     * Returns a hash value of this object. The {@link Class#getName()} and
+     * business key will be used for hash computation. If the business key of
+     * this object is <code>null</code> the method throws a {@link IllegalStateException}.
      *
      * @return The hash code of this object.
      *
