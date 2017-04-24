@@ -1,12 +1,17 @@
 package com.github.tomschi.commons.api.dbo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * The abstract class {@link AbstractSurrogateKeyDbo} can be used
- * for database objects with a surrogate key as primary key.
- * This implementation allows a nullable primary key, because the
- * key is generated during the persistence operation.
- * This abstract class overrides the equals and hashcode methods to
- * check the surrogate key equality and not the java object equality.
+ * for database objects with a surrogate key as primary key. The
+ * surrogate / primary key is type of {@link Long}, because database
+ * sequences are often used for this scenario. For this reason the
+ * surrogate / primary key can be null, because the key is generated
+ * during the persistence operation.
+ * This abstract class overrides the {@link #equals(Object)} and
+ * {@link #hashCode()} methods.
  *
  * @author Tomschi
  * @since 0.1.0
@@ -41,13 +46,12 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
 
     /**
      * Checks if this object equals the given object. The objects
-     * equals if:
-     * <p>
-     * <ul>
-     * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object has the same type</li>
-     * <li>The surrogate key of both objects are the same</li>
-     * </ul>
+     * are equal if the objects are the same <code>(this == obj)</code>
+     * or this class equals the given object class and the both
+     * surrogate keys are equal.
+     * <br/>
+     * If the surrogate key of this object is <code>null</code>,
+     * {@link Object#equals(Object)} is used.
      *
      * @param obj The object to equal.
      * @return <code>True</code>, if this object equals the other,
@@ -56,29 +60,31 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-
-        if (obj != null && this.getClass().equals(obj.getClass())) {
+        if (obj instanceof AbstractSurrogateKeyDbo) {
             AbstractSurrogateKeyDbo other = (AbstractSurrogateKeyDbo) obj;
-            if (getSurrogateKey() != null && other.getSurrogateKey() != null) {
-                return getSurrogateKey().equals(other.getSurrogateKey());
-            }
+            return !(getSurrogateKey() == null || other.getSurrogateKey() == null) &&
+                new EqualsBuilder()
+                    .append(this.getClass(), other.getClass())
+                    .append(this.getSurrogateKey(), other.getSurrogateKey())
+                    .isEquals();
         }
-
         return false;
     }
 
     /**
-     * Returns a hash value of this object. If the object is persisted
-     * the surrogate key is used for hash computation, else {@link Object#hashCode()}
-     * is used.
-     * So two objects with the same surrogate key has the same hash code.
+     * Returns a hash value of this object. If the the surrogate key
+     * is not null the {@link Class#getName()} and surrogate key will
+     * be used for hash computation, else {@link Object#hashCode()} is used.
      *
      * @return The hash code of this object.
      */
     @Override
     public int hashCode() {
         if (getSurrogateKey() != null) {
-            return getSurrogateKey().hashCode() * 14;
+            return new HashCodeBuilder()
+                    .append(getClass().getName())
+                    .append(getSurrogateKey())
+                    .toHashCode();
         }
         return super.hashCode();
     }

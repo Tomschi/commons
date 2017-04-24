@@ -25,6 +25,9 @@ public class DatabaseObjectTest {
 
     @Test
     public void testDatabaseObjectEquals() {
+        businessKeyDbo11.setBusinessKey(null);
+        surrogateKeyDbo11.setSurrogateKey(null);
+
         assertTrue(databaseObject1.equals(databaseObject1));
         assertFalse(databaseObject1.equals(databaseObject2));
         assertFalse(databaseObject1.equals(businessKeyDbo11));
@@ -37,8 +40,11 @@ public class DatabaseObjectTest {
         assertNotEquals(databaseObject1.hashCode(), databaseObject2.hashCode());
 
         businessKeyDbo11.setBusinessKey(1L);
-        surrogateKeyDbo11.setSurrogateKey(null);
+        surrogateKeyDbo11.setSurrogateKey(1L);
         assertNotEquals(databaseObject1.hashCode(), businessKeyDbo11.hashCode());
+        assertNotEquals(databaseObject1.hashCode(), surrogateKeyDbo12.hashCode());
+
+        surrogateKeyDbo11.setSurrogateKey(null);
         assertNotEquals(databaseObject1.hashCode(), surrogateKeyDbo12.hashCode());
     }
 
@@ -57,7 +63,6 @@ public class DatabaseObjectTest {
         businessKeyDbo12.setBusinessKey(2L);
         businessKeyDbo21.setBusinessKey(1L);
         surrogateKeyDbo11.setSurrogateKey(1L);
-        surrogateKeyDbo12.setSurrogateKey(2L);
 
         assertTrue(businessKeyDbo11.equals(businessKeyDbo11));
         assertTrue(businessKeyDbo12.equals(businessKeyDbo12));
@@ -78,7 +83,9 @@ public class DatabaseObjectTest {
     public void testBusinessKeyDboHashCode() {
         businessKeyDbo11.setBusinessKey(1L);
         businessKeyDbo12.setBusinessKey(2L);
+        businessKeyDbo21.setBusinessKey(1L);
         assertNotEquals(businessKeyDbo11.hashCode(), businessKeyDbo12.hashCode());
+        assertNotEquals(businessKeyDbo11.hashCode(), businessKeyDbo21.hashCode());
 
         businessKeyDbo12.setBusinessKey(1L);
         assertEquals(businessKeyDbo11.hashCode(), businessKeyDbo12.hashCode());
@@ -108,7 +115,6 @@ public class DatabaseObjectTest {
     @Test
     public void testSurrogateKeyDboEquals() {
         businessKeyDbo11.setBusinessKey(1L);
-        businessKeyDbo12.setBusinessKey(2L);
         surrogateKeyDbo11.setSurrogateKey(1L);
         surrogateKeyDbo12.setSurrogateKey(2L);
         surrogateKeyDbo21.setSurrogateKey(1L);
@@ -126,16 +132,28 @@ public class DatabaseObjectTest {
         assertFalse(surrogateKeyDbo11.equals(surrogateKeyDbo21));
         assertFalse(surrogateKeyDbo11.equals(databaseObject1));
         assertFalse(surrogateKeyDbo11.equals(businessKeyDbo11));
+
+        surrogateKeyDbo11.setSurrogateKey(null);
+        surrogateKeyDbo12.setSurrogateKey(null);
+        assertFalse(surrogateKeyDbo11.equals(surrogateKeyDbo12));
+        assertFalse(surrogateKeyDbo12.equals(surrogateKeyDbo11));
     }
 
     @Test
     public void testSurrogateKeyDboHashCode() {
         surrogateKeyDbo11.setSurrogateKey(1L);
         surrogateKeyDbo12.setSurrogateKey(2L);
+        surrogateKeyDbo21.setSurrogateKey(1L);
         assertNotEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo12.hashCode());
+        assertNotEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo21.hashCode());
 
         surrogateKeyDbo12.setSurrogateKey(1L);
         assertEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo12.hashCode());
+
+        surrogateKeyDbo11.setSurrogateKey(null);
+        surrogateKeyDbo12.setSurrogateKey(null);
+        assertNotEquals(surrogateKeyDbo11.hashCode(), surrogateKeyDbo12.hashCode());
+        assertNotEquals(surrogateKeyDbo12.hashCode(), surrogateKeyDbo11.hashCode());
     }
 
 }

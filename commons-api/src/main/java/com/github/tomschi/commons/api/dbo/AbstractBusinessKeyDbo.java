@@ -1,11 +1,16 @@
 package com.github.tomschi.commons.api.dbo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * The abstract class {@link AbstractBusinessKeyDbo} can be used
  * for database objects with a business key as primary key.
- * This implementation allows a not null primary key only.
- * This abstract class overrides the equals and hashcode methods to
- * check the business key equality and not the java object equality.
+ * The business key must not be <code>null</code>.
+ * This abstract class overrides the {@link #equals(Object)} and
+ * {@link #hashCode()} methods.
+ *
+ * @param <T> The type of the business key.
  *
  * @author Tomschi
  * @since 0.1.0
@@ -50,41 +55,43 @@ public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, Pr
 
     /**
      * Checks if this object equals the given object. The objects
-     * equals if:
-     * <p>
-     * <ul>
-     * <li>The objects are the same: <code>this == obj</code></li>
-     * <li>The other object has the same type</li>
-     * <li>The surrogate key of both objects are the same</li>
-     * </ul>
+     * are equal if the objects are the same <code>(this == obj)</code>
+     * or this class equals the given object class and the both
+     * business keys are equal.
+     * <br/>
+     * If the business key of this object is <code>null</code>,
+     * the method throws a {@link IllegalStateException}.
      *
      * @param obj The object to equal.
      * @return <code>True</code>, if this object equals the other,
      * else <code>false</code>.
+     *
+     * @throws IllegalStateException When business key of this object is null.
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
         businessKeyNotNull();
-
-        if (obj != null && this.getClass().equals(obj.getClass())) {
-            AbstractBusinessKeyDbo<?> other = (AbstractBusinessKeyDbo<?>) obj;
-            return getBusinessKey().equals(other.getBusinessKey());
-        }
-
-        return false;
+        return (this == obj) || (obj instanceof AbstractBusinessKeyDbo) &&
+                (new EqualsBuilder().append(this.getClass(), obj.getClass())
+                    .append(this.getBusinessKey(), ((AbstractBusinessKeyDbo<?>) obj).getBusinessKey()).isEquals());
     }
 
     /**
-     * Returns a hash value of this object. The business key is used for hash computation
-     * So two objects with the same business key has the same hash code.
+     * Returns a hash value of this object. The business key is used
+     * for hash computation. If the business key of this object is
+     * <code>null</code> the method throws a {@link IllegalStateException}.
      *
      * @return The hash code of this object.
+     *
+     * @throws IllegalStateException When business key of this object is null.
      */
     @Override
     public int hashCode() {
         businessKeyNotNull();
-        return getBusinessKey().hashCode() * 13;
+        return new HashCodeBuilder()
+                .append(getClass().getName())
+                .append(getBusinessKey())
+                .toHashCode();
     }
 
 }
