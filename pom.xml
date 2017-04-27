@@ -9,6 +9,31 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <name>commons-parent</name>
+    <description>Parent pom different commons modules</description>
+    <url>http://github.com/Tomschi/commons-parent</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Tomschi</name>
+            <email>tomschi@users.noreply.github.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/Tomschi/commons-parent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Tomschi/commons-parent.git</developerConnection>
+        <url>http://github.com/Tomschi/commons-parent/tree/master</url>
+    </scm>
+
     <modules>
         <module>commons-api</module>
     </modules>
