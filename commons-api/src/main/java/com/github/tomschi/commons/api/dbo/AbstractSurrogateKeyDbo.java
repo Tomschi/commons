@@ -60,8 +60,8 @@ public abstract class AbstractSurrogateKeyDbo implements SurrogateKeyDbo, Primar
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj instanceof AbstractSurrogateKeyDbo) {
-            AbstractSurrogateKeyDbo other = (AbstractSurrogateKeyDbo) obj;
+        if (obj instanceof SurrogateKeyDbo) {
+            SurrogateKeyDbo other = (SurrogateKeyDbo) obj;
             return !(getSurrogateKey() == null || other.getSurrogateKey() == null) &&
                 new EqualsBuilder()
                     .append(this.getClass(), other.getClass())

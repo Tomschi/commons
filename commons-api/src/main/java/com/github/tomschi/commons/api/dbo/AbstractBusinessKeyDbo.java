@@ -71,9 +71,9 @@ public abstract class AbstractBusinessKeyDbo<T> implements BusinessKeyDbo<T>, Pr
     @Override
     public boolean equals(Object obj) {
         businessKeyNotNull();
-        return (this == obj) || (obj instanceof AbstractBusinessKeyDbo) &&
+        return (this == obj) || (obj instanceof BusinessKeyDbo) &&
                 (new EqualsBuilder().append(this.getClass(), obj.getClass())
-                    .append(this.getBusinessKey(), ((AbstractBusinessKeyDbo<?>) obj).getBusinessKey()).isEquals());
+                    .append(this.getBusinessKey(), ((BusinessKeyDbo<?>) obj).getBusinessKey()).isEquals());
     }
 
     /**
