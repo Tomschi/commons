@@ -1,7 +1,5 @@
 package com.github.tomschi.commons.data.dbo;
 
-import java.io.Serializable;
-
 /**
  * The interface {@link DatabaseObject} is the base interface for
  * all database objects.
@@ -9,5 +7,5 @@ import java.io.Serializable;
  * @since 0.1.0
  * @author Tomschi
  */
-public interface DatabaseObject extends Serializable {
+public interface DatabaseObject {
 }

@@ -1,14 +1,14 @@
-package com.github.tomschi.commons.data.dbo;
+package com.github.tomschi.commons.data.dbo.sql;
 
 /**
- * The interface {@link PrimaryKeyDbo} is the base interface for
- * all database objects with a primary key.
+ * The interface {@link SQLPrimaryKeyDbo} is the base interface for
+ * all SQL based database objects with a primary key.
  *
  * @param <T> The type of the primary key.
  * @since 0.1.0
  * @author Tomschi
  */
-public interface PrimaryKeyDbo<T> extends DatabaseObject {
+public interface SQLPrimaryKeyDbo<T> extends SQLDatabaseObject {
 
     /**
      * The getter of the primary key.

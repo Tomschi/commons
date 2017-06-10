@@ -1,7 +1,7 @@
 package com.github.tomschi.commons.data.dto.rest;
 
 /**
- * The {@link IdentifiableRestDto} interface is the base interface for
+ * The {@link RESTIdentifiableDto} interface is the base interface for
  * all rest data transfer objects with an identifier.
  *
  * @param <T> The type of the identifier.
@@ -9,7 +9,7 @@ package com.github.tomschi.commons.data.dto.rest;
  * @since 0.1.0
  * @author Tomschi
  */
-public interface IdentifiableRestDto<T> extends RestDto {
+public interface RESTIdentifiableDto<T> extends RESTDataTransferObject {
 
     /**
      * The getter of the id.
