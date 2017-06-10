@@ -29,7 +29,7 @@ public abstract class AbstractRESTIdentifiableDto<T> implements RESTIdentifiable
     @Override
     public boolean equals(Object obj) {
         if (getId() == null) return (this == obj);
-        return (obj instanceof RESTIdentifiableDto)
+        return (this.getClass() == obj.getClass())
                 && this.getId().equals(((RESTIdentifiableDto<?>) obj).getId());
     }
 
