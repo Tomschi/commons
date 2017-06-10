@@ -27,7 +27,7 @@ public abstract class AbstractSQLPrimaryKeyDbo<T> implements SQLPrimaryKeyDbo<T>
     @Override
     public boolean equals(Object obj) {
         if (getPrimaryKey() == null) return (this == obj);
-        return (obj instanceof SQLPrimaryKeyDbo)
+        return (this.getClass() == obj.getClass())
                 && getPrimaryKey().equals(((SQLPrimaryKeyDbo<?>) obj).getPrimaryKey());
     }
 
