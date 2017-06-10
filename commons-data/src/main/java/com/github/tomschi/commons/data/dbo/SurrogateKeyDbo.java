@@ -3,8 +3,8 @@ package com.github.tomschi.commons.data.dbo;
 /**
  * The interface {@link SurrogateKeyDbo} is the base interface for
  * database objects with a surrogate key. The surrogate key is a
- * generated value, which identifies the object. Important is, that
- * the surrogate key is not globally unique.
+ * generated value, which identifies the object. The surrogate key
+ * is not a global unique.
  *
  * @param <T> The type of the surrogate key.
  *
