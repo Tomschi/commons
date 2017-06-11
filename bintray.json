@@ -1,7 +1,7 @@
 {
   "package": {
     "name": "commons-parent",
-    "repo": "oss",
+    "repo": "oss-repo",
     "subject": "tomschi",
     "vcs_url": "https://github.com/Tomschi/commons",
     "github_use_tag_release_notes": true,
