@@ -8,3 +8,10 @@ jdk:
 
 after_success:
   - mvn clean cobertura:cobertura coveralls:report
+
+deploy:
+  provider: bintray
+  file: bintray.json
+  user: tomschi
+  key:
+  dry-run: true
