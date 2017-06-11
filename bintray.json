@@ -1,0 +1,32 @@
+{
+  "package": {
+    "name": "commons-parent",
+    "repo": "oss",
+    "subject": "Tomschi",
+    "vcs_url": "https://github.com/Tomschi/commons",
+    "github_use_tag_release_notes": true,
+    "licenses": [
+      "Apache-2.0"
+    ],
+    "public_download_numbers": false,
+    "public_stats": false
+  },
+  "version": {
+    "name": "${project.artifactId}",
+    "vcs_tag": "${project.version}",
+    "released": "${build.timestamp}"
+  },
+  "files": [
+    {
+      "includePattern": "pom.xml",
+//      "uploadPattern": "be/tribersoft/triber-todo-config-server/0.0.1-SNAPSHOT/$1"
+      "uploadPattern": "$1"
+    }
+//  ,
+//    {
+//      "includePattern": "triber-todo-config-server/pom.xml",
+//      "uploadPattern": "be/tribersoft/triber-todo-config-server/${project.version}/triber-todo-config-server-${project.version}.pom"
+//    }
+  ],
+  "publish": true
+}
