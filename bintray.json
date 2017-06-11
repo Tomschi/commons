@@ -12,9 +12,9 @@
     "public_stats": false
   },
   "version": {
-    "name": "${project.artifactId}",
-    "vcs_tag": "${project.version}",
-    "released": "${build.timestamp}"
+    "name": "commons-parent",
+    "vcs_tag": "0.1.0-SNAPSHOT",
+    "released": "2017-06-17"
   },
   "files": [
     {
