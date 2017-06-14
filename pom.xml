@@ -39,6 +39,9 @@
     </modules>
 
     <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons.version>0.1.0-SNAPSHOT</commons.version>
         <java.version>1.6</java.version>

@@ -14,7 +14,7 @@
   "version": {
     "name": "${project.version}",
     "vcs_tag": "${project.version}",
-    "released": "${maven.build.timestamp}"
+    "released": "${timestamp}"
   },
   "files": [
     {
