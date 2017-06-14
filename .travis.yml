@@ -6,6 +6,9 @@ jdk:
 after_success:
 - mvn clean cobertura:cobertura coveralls:report
 
+before_deploy:
+- mvn clean package -DskipTests
+
 deploy:
   - provider: bintray
     file: bintray.json
