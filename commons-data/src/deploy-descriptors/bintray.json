@@ -13,17 +13,17 @@
   },
   "version": {
     "name": "${project.version}",
-    "vcs_tag": "${project.version}",
+    "vcs_tag": "v0.1.0",
     "released": "${timestamp}"
   },
   "files": [
     {
       "includePattern": "${project.build.directory}/(.*\.jar)",
-      "uploadPattern": "$1"
+      "uploadPattern": "com/github/tomschi/${project.artifactId}/${project.version}/$1"
     },
     {
       "includePattern": "${project.basedir}/pom.xml",
-      "uploadPattern": "${project.artifactId}-${project.version}.pom"
+      "uploadPattern": "com/github/tomschi/${project.artifactId}/${project.version}/${project.artifactId}-${project.version}.pom"
     }
   ],
   "publish": true
