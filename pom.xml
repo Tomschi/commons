@@ -31,7 +31,7 @@
     <scm>
         <connection>scm:git:git://github.com/Tomschi/commons-parent.git</connection>
         <developerConnection>scm:git:ssh://github.com:Tomschi/commons-parent.git</developerConnection>
-        <url>http://github.com/Tomschi/commons-parent/tree/master</url>
+        <url>https://github.com/Tomschi/commons</url>
     </scm>
 
     <modules>
