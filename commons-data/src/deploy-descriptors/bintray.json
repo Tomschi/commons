@@ -1,6 +1,6 @@
 {
   "package": {
-    "name": "commons-parent",
+    "name": "commons-data",
     "repo": "oss-repo",
     "subject": "tomschi",
     "vcs_url": "https://github.com/Tomschi/commons",
@@ -12,14 +12,14 @@
     "public_stats": false
   },
   "version": {
-    "name": "commons-parent",
-    "vcs_tag": "0.1.0-SNAPSHOT",
-    "released": "2017-06-14"
+    "name": "${project.version}",
+    "vcs_tag": "${project.version}",
+    "released": "${maven.build.timestamp}"
   },
   "files": [
     {
-      "includePattern": "../../pom.xml",
-      "uploadPattern": "commons-parent-0.1.0-SNAPSHOT.pom"
+      "includePattern": "${project.build.directory}/(.*\.jar)",
+      "uploadPattern": "$1"
     }
   ],
   "publish": true
