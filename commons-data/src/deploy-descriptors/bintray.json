@@ -19,7 +19,7 @@
   "files": [
     {
 //      "includePattern": "${project.build.directory}/(.*\.jar)",
-      "includePattern": "commons-data/target/(.*\.jar)",
+      "includePattern": "commons-data/target/(.*)",
       "uploadPattern": "$1"
     }
   ],
