@@ -1,6 +1,6 @@
 {
   "package": {
-    "name": "commons-data",
+    "name": "${project.artifactId}",
     "repo": "oss-repo",
     "subject": "tomschi",
     "vcs_url": "https://github.com/Tomschi/commons",
@@ -20,6 +20,10 @@
     {
       "includePattern": "${project.build.directory}/(.*\.jar)",
       "uploadPattern": "$1"
+    },
+    {
+      "includePattern": "${project.basedir}/pom.xml",
+      "uploadPattern": "${project.artifactId}-${project.version}.pom"
     }
   ],
   "publish": true
