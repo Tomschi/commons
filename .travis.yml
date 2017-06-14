@@ -1,8 +1,6 @@
 language: java
 sudo: false
 jdk:
-- openjdk7
-- oraclejdk7
 - oraclejdk8
 
 after_success:
@@ -10,7 +8,9 @@ after_success:
 
 deploy:
   provider: bintray
-  file: bintray.json
+  file:
+    - bintray.json
+    - commons-data/src/deploy-descriptors/bintray.json
   user: tomschi
   key:
     secure: FHsNg3SLwTy0yxICgodMzUSA7Jus8zXvnmOAc+iPnLnuLr7WCt4M3tWfuIhFdmgsbltr6h060U//kmKW9JTOEOG126OGZk9TTlftTNjYvPrHwIpRUBPvxVBolF8m99zohXM5giQzcdjCfXCaRiOAyow4FL01paPOSiTKx6nOakV46dNNeBgzyuyXSp9nmRLGG3EQWAJtepXKWXxDIeShplf1IArloFxOgOLkD+fW84xYo9GKvHW2QMVTFgJKBbC9nCDNgthinxPwoIGFg6l81g0LffAl4hNvAMrHnvukyKRPzs2o8DQ+f6x5Bu76NGmvbu0E9NChComl3k0RvnpuiwdU2FXt/HD6/I1cs70u57qULj++ktyMmoVLaF3KCqNYqjJkz01+4Q3N5ooLD0xJ7b46ECm9kcr0zAaYKPKDfPig+7Xd0q5i1x7/lA6ddxSsOeLR6a+we35wTCK0CghHRvs2/CFviV05bp/i7oXcfwHdJwRmanwKMQJexgnrdfOkr2/FbKMQCcsoDzq0K/P+akAD6nuRiMCX/RHK4EeoFlpUDuuLTWoeNnjSpSkV0AEzfQLXssk70Mnj6IktmK6LSRsoR7J4muterIqlQOPgPKHr6CMoenUY1DUFBpfqSKmci9krGIuSwMmO2euh/COTo7weakapthWXQL6EeomROPY=
