@@ -12,14 +12,14 @@
     "public_stats": false
   },
   "version": {
-    "name": "0.1.0-SNAPSHOT",
-    "vcs_tag": "0.1.0-SNAPSHOT",
+    "name": "0.1.0",
+    "vcs_tag": "0.1.0",
     "released": "2017-06-14"
   },
   "files": [
     {
       "includePattern": "pom.xml",
-      "uploadPattern": "commons-parent-0.1.0-SNAPSHOT.pom"
+      "uploadPattern": "commons-parent-0.1.0.pom"
     }
   ],
   "publish": true

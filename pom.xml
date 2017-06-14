@@ -6,7 +6,7 @@
 
     <groupId>com.github.tomschi</groupId>
     <artifactId>commons-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>pom</packaging>
 
     <name>commons-parent</name>
@@ -43,7 +43,6 @@
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons.version>0.1.0-SNAPSHOT</commons.version>
         <java.version>1.6</java.version>
     </properties>
 
@@ -97,6 +96,10 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
             </plugin>
         </plugins>
     </build>
