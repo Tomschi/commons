@@ -12,13 +12,13 @@
     "public_stats": false
   },
   "version": {
-    "name": "commons-parent",
+    "name": "0.1.0-SNAPSHOT",
     "vcs_tag": "0.1.0-SNAPSHOT",
     "released": "2017-06-14"
   },
   "files": [
     {
-      "includePattern": "../../pom.xml",
+      "includePattern": "pom.xml",
       "uploadPattern": "commons-parent-0.1.0-SNAPSHOT.pom"
     }
   ],
