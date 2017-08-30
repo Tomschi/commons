@@ -29,13 +29,16 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/Tomschi/commons-parent.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Tomschi/commons-parent.git</developerConnection>
+        <connection>scm:git:git://github.com/Tomschi/commons.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Tomschi/commons.git</developerConnection>
         <url>https://github.com/Tomschi/commons</url>
     </scm>
 
     <modules>
+        <module>commons-annotation</module>
+        <module>commons-aspect</module>
         <module>commons-data</module>
+        <module>commons-slf4j</module>
     </modules>
 
     <properties>
