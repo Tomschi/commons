@@ -32,6 +32,7 @@
         <connection>scm:git:git://github.com/Tomschi/commons.git</connection>
         <developerConnection>scm:git:ssh://github.com:Tomschi/commons.git</developerConnection>
         <url>https://github.com/Tomschi/commons</url>
+        <tag>v${project.version}</tag>
     </scm>
 
     <modules>
