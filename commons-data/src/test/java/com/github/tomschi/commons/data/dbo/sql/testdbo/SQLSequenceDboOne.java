@@ -8,20 +8,20 @@ import com.github.tomschi.commons.data.dbo.sql.AbstractSQLSequenceDbo;
 public class SQLSequenceDboOne extends AbstractSQLSequenceDbo {
 
     private static final long serialVersionUID = 4740291476306011033L;
-    private Long primaryKey;
+    private Long id;
 
-    public SQLSequenceDboOne(Long primaryKey) {
-        this.primaryKey = primaryKey;
+    public SQLSequenceDboOne(Long id) {
+        this.id = id;
     }
 
     @Override
-    public Long getPrimaryKey() {
-        return this.primaryKey;
+    public Long getId() {
+        return this.id;
     }
 
     @Override
-    public void setPrimaryKey(Long primaryKey) {
-        this.primaryKey = primaryKey;
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

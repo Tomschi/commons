@@ -6,10 +6,12 @@ import java.io.Serializable;
 
 /**
  * The interface {@link SQLDatabaseObject} is the base interface for
- * all SQL based database objects.
+ * all SQL based database objects with a identifier also called primary
+ * key.
  *
- * @since 0.1.0
+ * @param <T> The type of the id.
  * @author Tomschi
+ * @since 0.1.0
  */
-public interface SQLDatabaseObject extends DatabaseObject, Serializable {
+public interface SQLDatabaseObject<T extends Serializable> extends DatabaseObject<T>, Serializable {
 }

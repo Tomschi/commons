@@ -1,16 +1,16 @@
 package com.github.tomschi.commons.data.dbo.sql.testdbo;
 
-import com.github.tomschi.commons.data.dbo.sql.AbstractSQLSequenceDbo;
+import com.github.tomschi.commons.data.dbo.sql.AbstractSQLDatabaseObject;
 
 /**
  * @author Tomschi
  */
-public class SQLSequenceDboTwo extends AbstractSQLSequenceDbo {
+public class SQLDboTwo extends AbstractSQLDatabaseObject<Long> {
 
-    private static final long serialVersionUID = 1120208093478540280L;
+    private static final long serialVersionUID = 2100148193604001376L;
     private Long id;
 
-    public SQLSequenceDboTwo(Long id) {
+    public SQLDboTwo(Long id) {
         this.id = id;
     }
 

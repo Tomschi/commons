@@ -29,12 +29,12 @@ public class AbstractSQLSequenceDboTest {
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 
-        first.setPrimaryKey(null);
-        second.setPrimaryKey(null);
+        first.setId(null);
+        second.setId(null);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 
-        first.setPrimaryKey(1L);
+        first.setId(1L);
         second = new SQLSequenceDboTwo(1L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
