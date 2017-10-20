@@ -1,16 +1,16 @@
-package com.github.tomschi.commons.data.dbo.sql.testdbo;
+package com.github.tomschi.commons.data.dbo.jpa.testdbo;
 
-import com.github.tomschi.commons.data.dbo.sql.AbstractSQLDatabaseObject;
+import com.github.tomschi.commons.data.dbo.jpa.AbstractJpaDatabaseObject;
 
 /**
  * @author Tomschi
  */
-public class SQLDboTwo extends AbstractSQLDatabaseObject<Long> {
+public class JpaDboTwo extends AbstractJpaDatabaseObject<Long> {
 
     private static final long serialVersionUID = 2100148193604001376L;
     private Long id;
 
-    public SQLDboTwo(Long id) {
+    public JpaDboTwo(Long id) {
         this.id = id;
     }
 

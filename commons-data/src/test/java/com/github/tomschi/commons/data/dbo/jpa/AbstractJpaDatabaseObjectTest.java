@@ -1,7 +1,7 @@
-package com.github.tomschi.commons.data.dbo.sql;
+package com.github.tomschi.commons.data.dbo.jpa;
 
-import com.github.tomschi.commons.data.dbo.sql.testdbo.SQLDboOne;
-import com.github.tomschi.commons.data.dbo.sql.testdbo.SQLDboTwo;
+import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaDboOne;
+import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaDboTwo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
 /**
  * @author Tomschi
  */
-public class AbstractSQLDatabaseObjectTest {
+public class AbstractJpaDatabaseObjectTest {
 
     @Test
     public void testEqualsHashCodeSuccess() {
-        SQLDboOne first = new SQLDboOne(1L);
-        SQLDboOne second = new SQLDboOne(1L);
+        JpaDboOne first = new JpaDboOne(1L);
+        JpaDboOne second = new JpaDboOne(1L);
         assertTrue(first.equals(second));
         assertEquals(first.hashCode(), second.hashCode());
 
@@ -24,8 +24,8 @@ public class AbstractSQLDatabaseObjectTest {
 
     @Test
     public void testEqualsFails() {
-        SQLDatabaseObject<Long> first = new SQLDboOne(1L);
-        SQLDatabaseObject<Long> second = new SQLDboOne(2L);
+        JpaDatabaseObject<Long> first = new JpaDboOne(1L);
+        JpaDatabaseObject<Long> second = new JpaDboOne(2L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 
@@ -35,7 +35,7 @@ public class AbstractSQLDatabaseObjectTest {
         assertNotEquals(first.hashCode(), second.hashCode());
 
         first.setId(1L);
-        second = new SQLDboTwo(1L);
+        second = new JpaDboTwo(1L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 

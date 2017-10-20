@@ -1,9 +1,9 @@
-package com.github.tomschi.commons.data.dbo.sql;
+package com.github.tomschi.commons.data.dbo.jpa;
 
 import java.io.Serializable;
 
 /**
- * The abstract class {@link AbstractSQLDatabaseObject} can be used
+ * The abstract class {@link AbstractJpaDatabaseObject} can be used
  * for database objects with a id also called primary key. This
  * class overrides the {@link #equals(Object)} and {@link #hashCode()}
  * method.
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.1.0
  */
-public abstract class AbstractSQLDatabaseObject<T extends Serializable> implements SQLDatabaseObject<T> {
+public abstract class AbstractJpaDatabaseObject<T extends Serializable> implements JpaDatabaseObject<T> {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public abstract class AbstractSQLDatabaseObject<T extends Serializable> implemen
     public boolean equals(Object obj) {
         if (getId() == null) return (this == obj);
         return (this.getClass() == obj.getClass())
-                && getId().equals(((SQLDatabaseObject<?>) obj).getId());
+                && getId().equals(((JpaDatabaseObject<?>) obj).getId());
     }
 
     /**

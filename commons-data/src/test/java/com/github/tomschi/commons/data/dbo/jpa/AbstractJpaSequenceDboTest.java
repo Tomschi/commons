@@ -1,7 +1,7 @@
-package com.github.tomschi.commons.data.dbo.sql;
+package com.github.tomschi.commons.data.dbo.jpa;
 
-import com.github.tomschi.commons.data.dbo.sql.testdbo.SQLSequenceDboOne;
-import com.github.tomschi.commons.data.dbo.sql.testdbo.SQLSequenceDboTwo;
+import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaSequenceDboOne;
+import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaSequenceDboTwo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
 /**
  * @author Tomschi
  */
-public class AbstractSQLSequenceDboTest {
+public class AbstractJpaSequenceDboTest {
 
     @Test
     public void testEqualsHashCodeSuccess() {
-        SQLSequenceDbo first = new SQLSequenceDboOne(1L);
-        SQLSequenceDbo second = new SQLSequenceDboOne(1L);
+        JpaSequenceDbo first = new JpaSequenceDboOne(1L);
+        JpaSequenceDbo second = new JpaSequenceDboOne(1L);
         assertTrue(first.equals(second));
         assertEquals(first.hashCode(), second.hashCode());
 
@@ -24,8 +24,8 @@ public class AbstractSQLSequenceDboTest {
 
     @Test
     public void testEqualsFails() {
-        SQLSequenceDbo first = new SQLSequenceDboOne(1L);
-        SQLSequenceDbo second = new SQLSequenceDboOne(2L);
+        JpaSequenceDbo first = new JpaSequenceDboOne(1L);
+        JpaSequenceDbo second = new JpaSequenceDboOne(2L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 
@@ -35,7 +35,7 @@ public class AbstractSQLSequenceDboTest {
         assertNotEquals(first.hashCode(), second.hashCode());
 
         first.setId(1L);
-        second = new SQLSequenceDboTwo(1L);
+        second = new JpaSequenceDboTwo(1L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 

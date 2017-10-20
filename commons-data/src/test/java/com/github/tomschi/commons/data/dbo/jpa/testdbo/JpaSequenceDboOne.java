@@ -1,16 +1,16 @@
-package com.github.tomschi.commons.data.dbo.sql.testdbo;
+package com.github.tomschi.commons.data.dbo.jpa.testdbo;
 
-import com.github.tomschi.commons.data.dbo.sql.AbstractSQLSequenceDbo;
+import com.github.tomschi.commons.data.dbo.jpa.AbstractJpaSequenceDbo;
 
 /**
  * @author Tomschi
  */
-public class SQLSequenceDboOne extends AbstractSQLSequenceDbo {
+public class JpaSequenceDboOne extends AbstractJpaSequenceDbo {
 
     private static final long serialVersionUID = 4740291476306011033L;
     private Long id;
 
-    public SQLSequenceDboOne(Long id) {
+    public JpaSequenceDboOne(Long id) {
         this.id = id;
     }
 
