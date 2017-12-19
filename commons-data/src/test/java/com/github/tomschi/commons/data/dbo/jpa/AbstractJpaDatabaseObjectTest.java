@@ -2,9 +2,9 @@ package com.github.tomschi.commons.data.dbo.jpa;
 
 import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaDboOne;
 import com.github.tomschi.commons.data.dbo.jpa.testdbo.JpaDboTwo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Tomschi

@@ -1,7 +1,7 @@
 package com.github.tomschi.commons.slf4j;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 import org.slf4j.event.Level;
@@ -12,8 +12,8 @@ import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test class for {@link Slf4jUtils}.
@@ -32,7 +32,7 @@ public class Slf4jUtilsTest {
     private final static IllegalArgumentException EXCEPTION = new IllegalArgumentException("Simple log Exception");
     private final static Marker MARKER = MarkerFactory.getMarker("Test Marker");
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         log.clear();
     }
