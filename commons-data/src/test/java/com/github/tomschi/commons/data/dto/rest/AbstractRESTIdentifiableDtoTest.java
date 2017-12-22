@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AbstractRESTIdentifiableDtoTest {
 
     @Test
-    public void testEqualsHashCodeSuccess() {
+    void testEqualsHashCodeSuccess() {
         RESTIdentifiableDto<Long> first = new RESTIdentifiableDtoOne(1L);
         RESTIdentifiableDto<Long> second = new RESTIdentifiableDtoOne(1L);
         assertTrue(first.equals(second));
@@ -23,7 +23,7 @@ public class AbstractRESTIdentifiableDtoTest {
     }
 
     @Test
-    public void testEqualsFails() {
+    void testEqualsFails() {
         RESTIdentifiableDto<Long> first = new RESTIdentifiableDtoOne(1L);
         RESTIdentifiableDto<Long> second = new RESTIdentifiableDtoOne(2L);
         assertFalse(first.equals(second));

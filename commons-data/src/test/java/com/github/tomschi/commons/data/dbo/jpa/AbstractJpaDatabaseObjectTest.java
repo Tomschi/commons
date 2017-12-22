@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AbstractJpaDatabaseObjectTest {
 
     @Test
-    public void testEqualsHashCodeSuccess() {
+    void testEqualsHashCodeSuccess() {
         JpaDboOne first = new JpaDboOne(1L);
         JpaDboOne second = new JpaDboOne(1L);
         assertTrue(first.equals(second));
@@ -23,7 +23,7 @@ public class AbstractJpaDatabaseObjectTest {
     }
 
     @Test
-    public void testEqualsFails() {
+    void testEqualsFails() {
         JpaDatabaseObject<Long> first = new JpaDboOne(1L);
         JpaDatabaseObject<Long> second = new JpaDboOne(2L);
         assertFalse(first.equals(second));

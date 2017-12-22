@@ -33,7 +33,7 @@ public class Slf4jUtilsTest {
     private final static Marker MARKER = MarkerFactory.getMarker("Test Marker");
 
     @AfterEach
-    public void tearDown() throws Exception {
+    void tearDown() {
         log.clear();
     }
 
@@ -79,7 +79,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testLog() {
+    void testLog() {
         assertLog(Level.TRACE);
         assertLog(Level.DEBUG);
         assertLog(Level.INFO);
@@ -88,7 +88,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testMarkerLog() {
+    void testMarkerLog() {
         assertLog(Level.TRACE, MARKER);
         assertLog(Level.DEBUG, MARKER);
         assertLog(Level.INFO, MARKER);
@@ -122,7 +122,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testArgLog() {
+    void testArgLog() {
         assertArgLog(Level.TRACE);
         assertArgLog(Level.DEBUG);
         assertArgLog(Level.INFO);
@@ -131,7 +131,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testMarkerArgLog() {
+    void testMarkerArgLog() {
         assertArgLog(Level.TRACE, MARKER);
         assertArgLog(Level.DEBUG, MARKER);
         assertArgLog(Level.INFO, MARKER);
@@ -161,7 +161,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testExceptionLog() {
+    void testExceptionLog() {
         assertExceptionLog(Level.TRACE);
         assertExceptionLog(Level.DEBUG);
         assertExceptionLog(Level.INFO);
@@ -170,7 +170,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testMarkerExceptionLog() {
+    void testMarkerExceptionLog() {
         assertExceptionLog(Level.TRACE, MARKER);
         assertExceptionLog(Level.DEBUG, MARKER);
         assertExceptionLog(Level.INFO, MARKER);
@@ -179,7 +179,7 @@ public class Slf4jUtilsTest {
     }
 
     @Test
-    public void testIsLoggerEnabled() {
+    void testIsLoggerEnabled() {
         assertTrue(Slf4jUtils.isEnabled(log, Level.TRACE));
         assertTrue(Slf4jUtils.isEnabled(log, Level.TRACE, MARKER));
         assertTrue(Slf4jUtils.isEnabled(log, Level.DEBUG));
