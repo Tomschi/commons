@@ -39,6 +39,7 @@
         <module>commons-annotation</module>
         <module>commons-aspect</module>
         <module>commons-data</module>
+        <module>commons-data-test</module>
         <module>commons-slf4j</module>
         <module>commons-spring-data</module>
         <module>commons-spring-data-jpa</module>
