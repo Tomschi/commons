@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * purpose the target method must be annotated with {@link LogExecution}
  * annotation.
  *
- * <br/>
+ * <br>
  *
  * It is also possible to annotate the class with {@link LogExecution}.
  * Then all public methods of the class are logged.
@@ -53,7 +53,7 @@ public class MethodLogger {
      * Checks if the mehtod execution time should be logged. This method
      * compares the {@link LogExecution#limit()} and the given execution time.
      *
-     * <br/>
+     * <br>
      *
      * If {@link LogExecution#limit()} is less than the given execution time
      * the method returns <code>true</code>, else <code>false</code>.
@@ -112,7 +112,7 @@ public class MethodLogger {
      * This method is called, when a method is annotated with {@link LogExecution} or
      * a class is annotated with {@link LogExecution} and the called method is public.
      *
-     * <br/>
+     * <br>
      *
      * The method calculates the execution time of the called method. For this purpose
      * the {@link StopWatch} is used. It will be only logged, if the execution time is
