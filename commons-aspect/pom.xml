@@ -5,7 +5,7 @@
     <parent>
         <artifactId>commons-parent</artifactId>
         <groupId>com.github.tomschi</groupId>
-        <version>0.1.1</version>
+        <version>0.1.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -34,13 +34,13 @@
         <dependency>
             <groupId>com.github.tomschi</groupId>
             <artifactId>commons-annotation</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.tomschi</groupId>
             <artifactId>commons-slf4j</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
