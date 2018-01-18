@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * to annotate classes and methods. When a class is annotated
  * every public method of the class will be logged over slf4j.
  *
- * <br/>
+ * <br>
  *
  * To enable this feature the MethodLogger aspect of the commons-aspect
  * library is needed.
@@ -38,7 +38,7 @@ public @interface LogExecution {
      * When the execution time is greater than the limit,
      * the execution time is logged.
      *
-     * <br/>
+     * <br>
      *
      * The default value is 0, so the execution time is
      * always greater than the limit.
