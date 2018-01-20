@@ -1,7 +1,7 @@
 package com.github.tomschi.commons.data.dto.rest;
 
-import com.github.tomschi.commons.data.dto.rest.testdto.RESTIdentifiableDtoOne;
-import com.github.tomschi.commons.data.dto.rest.testdto.RESTIdentifiableDtoTwo;
+import com.github.tomschi.commons.data.test.dto.rest.BarRESTIdentifiableDto;
+import com.github.tomschi.commons.data.test.dto.rest.FooRESTIdentifiableDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author Tomschi
  */
-public class AbstractRESTIdentifiableDtoTest {
+class AbstractRESTIdentifiableDtoTest {
 
     @Test
     void testEqualsHashCodeSuccess() {
-        RESTIdentifiableDto<Long> first = new RESTIdentifiableDtoOne(1L);
-        RESTIdentifiableDto<Long> second = new RESTIdentifiableDtoOne(1L);
+        RESTIdentifiableDto<Long> first = new BarRESTIdentifiableDto(1L);
+        RESTIdentifiableDto<Long> second = new BarRESTIdentifiableDto(1L);
         assertTrue(first.equals(second));
         assertEquals(first.hashCode(), second.hashCode());
 
@@ -24,8 +24,8 @@ public class AbstractRESTIdentifiableDtoTest {
 
     @Test
     void testEqualsFails() {
-        RESTIdentifiableDto<Long> first = new RESTIdentifiableDtoOne(1L);
-        RESTIdentifiableDto<Long> second = new RESTIdentifiableDtoOne(2L);
+        RESTIdentifiableDto<Long> first = new BarRESTIdentifiableDto(1L);
+        RESTIdentifiableDto<Long> second = new BarRESTIdentifiableDto(2L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 
@@ -35,7 +35,7 @@ public class AbstractRESTIdentifiableDtoTest {
         assertNotEquals(first.hashCode(), second.hashCode());
 
         first.setId(1L);
-        second = new RESTIdentifiableDtoTwo(1L);
+        second = new FooRESTIdentifiableDto(1L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 

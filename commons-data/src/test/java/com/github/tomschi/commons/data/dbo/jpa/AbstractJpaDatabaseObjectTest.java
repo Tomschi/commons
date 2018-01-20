@@ -1,16 +1,11 @@
 package com.github.tomschi.commons.data.dbo.jpa;
 
-//import com.github.tomschi.commons.data.test.dbo.jpa.BarJpaDbo;
-//import com.github.tomschi.commons.data.test.dbo.jpa.FooJpaDbo;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.TestInstance;
-//
-//import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.TestInstance;
 
 /**
  * @author Tomschi
  */
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AbstractJpaDatabaseObjectTest {
 
 //    @Test
