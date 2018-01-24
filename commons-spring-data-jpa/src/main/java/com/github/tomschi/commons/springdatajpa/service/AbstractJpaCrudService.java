@@ -2,6 +2,8 @@ package com.github.tomschi.commons.springdatajpa.service;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
 import com.github.tomschi.commons.springdata.service.SortingAndPagingService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,12 @@ public abstract class AbstractJpaCrudService<T extends DatabaseObject<ID>, ID ex
     @Transactional(readOnly = true)
     public List<T> findAll(Sort sort) {
         return getRepository().findAll(sort);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<T> findAll(Pageable pageable) {
+        return getRepository().findAll(pageable);
     }
 
     @Override
