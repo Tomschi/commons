@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The aspect MethodLogger logs the execution time of methods. For this
+ * The aspect MethodExecutionLogger logs the execution time of methods. For this
  * purpose the target method must be annotated with {@link LogExecution}
  * annotation.
  *
@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * @since 0.1.1
  */
 @Aspect
-public class MethodLogger {
+public class MethodExecutionLogger {
 
     private final static String logMessage = "Method {} needs {} to execute.";
 
