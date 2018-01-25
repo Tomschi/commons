@@ -1,7 +1,5 @@
 package com.github.tomschi.commons.springdatajpa.dbo;
 
-import com.github.tomschi.commons.data.dbo.jpa.AbstractJpaDatabaseObject;
-
 /**
  * @author Tomschi
  * @since 0.1.0
