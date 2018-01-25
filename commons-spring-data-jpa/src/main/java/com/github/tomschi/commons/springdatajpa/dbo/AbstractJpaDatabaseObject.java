@@ -1,4 +1,4 @@
-package com.github.tomschi.commons.data.dbo.jpa;
+package com.github.tomschi.commons.springdatajpa.dbo;
 
 import java.io.Serializable;
 
@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.1.0
  */
-@Deprecated
 public abstract class AbstractJpaDatabaseObject<T extends Serializable> implements JpaDatabaseObject<T> {
 
     private static final long serialVersionUID = 1L;

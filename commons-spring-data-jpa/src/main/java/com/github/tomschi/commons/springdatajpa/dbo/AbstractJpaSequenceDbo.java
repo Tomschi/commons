@@ -1,4 +1,4 @@
-package com.github.tomschi.commons.data.dbo.jpa;
+package com.github.tomschi.commons.springdatajpa.dbo;
 
 /**
  * The abstract class {@link AbstractJpaDatabaseObject} can be
@@ -9,7 +9,6 @@ package com.github.tomschi.commons.data.dbo.jpa;
  * @see AbstractJpaDatabaseObject
  * @since 0.1.0
  */
-@Deprecated
 public abstract class AbstractJpaSequenceDbo extends AbstractJpaDatabaseObject<Long> implements JpaSequenceDbo {
 
     private static final long serialVersionUID = 1L;

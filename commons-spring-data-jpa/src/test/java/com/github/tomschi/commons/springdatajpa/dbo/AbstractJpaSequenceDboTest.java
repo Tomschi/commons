@@ -1,4 +1,4 @@
-package com.github.tomschi.commons.data.dbo.jpa;
+package com.github.tomschi.commons.springdatajpa.dbo;
 
 import com.github.tomschi.commons.data.test.dbo.jpa.BarJpaSequenceDbo;
 import com.github.tomschi.commons.data.test.dbo.jpa.FooJpaSequenceDbo;
@@ -13,8 +13,8 @@ class AbstractJpaSequenceDboTest {
 
     @Test
     void testEqualsHashCodeSuccess() {
-        JpaSequenceDbo first = new BarJpaSequenceDbo(1L);
-        JpaSequenceDbo second = new BarJpaSequenceDbo(1L);
+        com.github.tomschi.commons.data.dbo.jpa.JpaSequenceDbo first = new BarJpaSequenceDbo(1L);
+        com.github.tomschi.commons.data.dbo.jpa.JpaSequenceDbo second = new BarJpaSequenceDbo(1L);
         assertTrue(first.equals(second));
         assertEquals(first.hashCode(), second.hashCode());
 
@@ -24,8 +24,8 @@ class AbstractJpaSequenceDboTest {
 
     @Test
     void testEqualsFails() {
-        JpaSequenceDbo first = new BarJpaSequenceDbo(1L);
-        JpaSequenceDbo second = new BarJpaSequenceDbo(2L);
+        com.github.tomschi.commons.data.dbo.jpa.JpaSequenceDbo first = new BarJpaSequenceDbo(1L);
+        com.github.tomschi.commons.data.dbo.jpa.JpaSequenceDbo second = new BarJpaSequenceDbo(2L);
         assertFalse(first.equals(second));
         assertNotEquals(first.hashCode(), second.hashCode());
 

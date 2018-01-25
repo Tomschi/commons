@@ -1,4 +1,4 @@
-package com.github.tomschi.commons.data.dbo.jpa;
+package com.github.tomschi.commons.springdatajpa.dbo;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
 
@@ -13,6 +13,5 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.1.0
  */
-@Deprecated
 public interface JpaDatabaseObject<T extends Serializable> extends DatabaseObject<T>, Serializable {
 }

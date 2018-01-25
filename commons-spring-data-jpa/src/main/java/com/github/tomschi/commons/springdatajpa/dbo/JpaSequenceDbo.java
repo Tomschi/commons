@@ -1,4 +1,4 @@
-package com.github.tomschi.commons.data.dbo.jpa;
+package com.github.tomschi.commons.springdatajpa.dbo;
 
 import com.github.tomschi.commons.data.dbo.SequenceDatabaseObject;
 
@@ -10,6 +10,5 @@ import com.github.tomschi.commons.data.dbo.SequenceDatabaseObject;
  * @author Tomschi
  * @since 0.1.0
  */
-@Deprecated
 public interface JpaSequenceDbo extends JpaDatabaseObject<Long>, SequenceDatabaseObject {
 }
