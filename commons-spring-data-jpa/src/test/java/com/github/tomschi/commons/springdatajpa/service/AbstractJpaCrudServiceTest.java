@@ -1,6 +1,6 @@
 package com.github.tomschi.commons.springdatajpa.service;
 
-import com.github.tomschi.commons.data.test.dbo.jpa.FooJpaSequenceDbo;
+import com.github.tomschi.commons.springdatajpa.dbo.FooJpaSequenceDbo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

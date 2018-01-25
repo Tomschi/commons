@@ -1,7 +1,5 @@
 package com.github.tomschi.commons.springdatajpa.dbo;
 
-import com.github.tomschi.commons.data.test.dbo.jpa.BarJpaSequenceDbo;
-import com.github.tomschi.commons.data.test.dbo.jpa.FooJpaSequenceDbo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

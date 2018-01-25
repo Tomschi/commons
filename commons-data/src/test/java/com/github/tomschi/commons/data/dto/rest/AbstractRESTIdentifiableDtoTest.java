@@ -1,7 +1,5 @@
 package com.github.tomschi.commons.data.dto.rest;
 
-import com.github.tomschi.commons.data.test.dto.rest.BarRESTIdentifiableDto;
-import com.github.tomschi.commons.data.test.dto.rest.FooRESTIdentifiableDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
