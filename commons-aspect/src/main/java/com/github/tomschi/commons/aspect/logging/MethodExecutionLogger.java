@@ -50,7 +50,7 @@ public class MethodExecutionLogger {
     }
 
     /**
-     * Checks if the mehtod execution time should be logged. This method
+     * Checks if the method execution time should be logged. This method
      * compares the {@link LogExecution#limit()} and the given execution time.
      *
      * <br>
