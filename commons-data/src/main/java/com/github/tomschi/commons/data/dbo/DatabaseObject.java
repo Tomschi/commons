@@ -1,5 +1,7 @@
 package com.github.tomschi.commons.data.dbo;
 
+import com.github.tomschi.commons.data.DataObject;
+
 import java.io.Serializable;
 
 /**
@@ -10,7 +12,7 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.1.0
  */
-public interface DatabaseObject<T extends Serializable> {
+public interface DatabaseObject<T extends Serializable> extends DataObject {
 
     /**
      * The getter of the id.
