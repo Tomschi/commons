@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The interface {@link CrudService} defines methods for all CRUD operations.
+ * The interface {@link CrudDboService} defines methods for all CRUD operations.
  * The methods are the same as in CrudRepository of the spring framework.
  * One difference is, that an {@link Optional} is returned instead of {@literal null}
  * values.
@@ -18,7 +18,7 @@ import java.util.Optional;
  * @author Tomschi
  * @since 0.1.1
  */
-public interface CrudService<T extends DatabaseObject<ID>, ID extends Serializable> {
+public interface CrudDboService<T extends DatabaseObject<ID>, ID extends Serializable> {
 
     /**
      * Returns a {@link List} of all {@link DatabaseObject}s of type {@link T}. In case no entity was found
