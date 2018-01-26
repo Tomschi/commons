@@ -1,110 +1,107 @@
-package com.github.tomschi.commons.springdatajpa.service;
+package com.github.tomschi.commons.springdatajpa.controller;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
+import com.github.tomschi.commons.springdatajpa.service.JpaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * The abstract class {@link AbstractJpaService} can be used as base class for
- * a jpa based crud service. It implements crud operations for the given {@link DatabaseObject}.
- *
- * @param <T> The type of the {@link DatabaseObject}.
- * @param <ID> The type of the id of the {@link DatabaseObject}.
- * @param <R> The type of the repository.
- *
- * @author Tomschi
- * @since 0.1.2
- */
-public abstract class AbstractJpaService<T extends DatabaseObject<ID>, ID extends Serializable, R extends JpaRepository<T,ID>>
-        extends AbstractRepositoryService<R> implements JpaService<T, ID> {
+public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID extends Serializable, S extends JpaService<T, ID>>
+        implements JpaController<T, ID, S> {
 
-    public AbstractJpaService(R repository) {
-        super(repository);
+    private final S service;
+
+    public AbstractJpaController(S service) {
+        Assert.notNull(service);
+        this.service = service;
+    }
+
+    protected S getService() {
+        return this.service;
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<T> findAll() {
-        return getRepository().findAll();
+        return getService().findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<T> findAll(Iterable<ID> ids) {
-        return getRepository().findAll(ids);
+        return getService().findAll(ids);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<T> findAll(Sort sort) {
-        return getRepository().findAll(sort);
+        return getService().findAll(sort);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<T> findAll(Pageable pageable) {
-        return getRepository().findAll(pageable);
+        return getService().findAll(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<T> findOne(ID id) {
-        return Optional.ofNullable(getRepository().findOne(id));
+        return getService().findOne(id);
     }
 
     @Override
     @Transactional
     public Optional<T> save(T entity) {
-        return Optional.ofNullable(getRepository().save(entity));
+        return getService().save(entity);
     }
 
     @Override
     @Transactional
     public List<T> save(Iterable<T> entities) {
-        return getRepository().save(entities);
+        return getService().save(entities);
     }
 
     @Override
     @Transactional(readOnly = true)
     public boolean exists(ID id) {
-        return getRepository().exists(id);
+        return getService().exists(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public long count() {
-        return getRepository().count();
+        return getService().count();
     }
 
     @Override
     @Transactional
     public void delete(ID id) {
-        getRepository().delete(id);
+        getService().delete(id);
     }
 
     @Override
     @Transactional
     public void delete(T entity) {
-        getRepository().delete(entity);
+        getService().delete(entity);
     }
 
     @Override
     @Transactional
     public void delete(Iterable<T> entities) {
-        getRepository().delete(entities);
+        getService().delete(entities);
     }
 
     @Override
     @Transactional
     public void deleteAll() {
-        getRepository().deleteAll();
+        getService().deleteAll();
     }
 
 }

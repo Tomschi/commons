@@ -1,7 +1,6 @@
 package com.github.tomschi.commons.springdatajpa.service;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
-import com.github.tomschi.commons.springdata.service.SortingAndPagingService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -10,17 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * The abstract class {@link AbstractJpaInheritCrudService} can be used as base class
+ * The abstract class {@link AbstractJpaSupertypeService} can be used as base class
  * for an jpa based crud service.It implements crud operations for the given {@link DatabaseObject}
- * but uses the given interface type {@link I} instead.
+ * but uses the given interface type {@link S} instead.
  *
- * @param <I> The interface type of the {@link DatabaseObject}
+ * @param <S> The supertype of the {@link DatabaseObject}.
  * @param <T> The type of the {@link DatabaseObject}.
  * @param <ID> The type of the id of the {@link DatabaseObject}.
  * @param <R> The type of the repository.
@@ -28,8 +26,8 @@ import java.util.Optional;
  * @author Tomschi
  * @since 0.1.1
  */
-public abstract class AbstractJpaInheritCrudService<I extends DatabaseObject<ID>, T extends I, ID extends Serializable, R extends JpaRepository<T, ID>>
-        extends AbstractJpaService<R> implements SortingAndPagingService<I, ID> {
+public abstract class AbstractJpaSupertypeService<S extends DatabaseObject<ID>, T extends S, ID extends Serializable, R extends JpaRepository<T,ID>>
+        extends AbstractRepositoryService<R> implements JpaSupertypeService<S, T, ID> {
 
     private final Class<T> T_TYPE;
 
@@ -38,33 +36,23 @@ public abstract class AbstractJpaInheritCrudService<I extends DatabaseObject<ID>
      *
      * @param repository A repository of type {@link R}
      */
-    public AbstractJpaInheritCrudService(R repository) {
+    public AbstractJpaSupertypeService(R repository) {
         super(repository);
 
-        // get type name of generic class <T>
-        String tTypeName = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1].getTypeName();
-        T_TYPE = loadT_Type(tTypeName);
-    }
-
-    private Class<T> loadT_Type(String tTypeName) {
-        try {
-            @SuppressWarnings("unchecked")
-            Class<T> t = (Class<T>) Class.forName(tTypeName);
-            return t;
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Cannot load class of generic type <T>", e);
-        }
-    }
-
-    private List<I> castList(List<T> list) {
         @SuppressWarnings("unchecked")
-        List<I> result = (List<I>) list;
+        Class<T> t = (Class<T>) newInstance().getClass();
+        T_TYPE = t;
+    }
+
+    private List<S> castList(List<T> list) {
+        @SuppressWarnings("unchecked")
+        List<S> result = (List<S>) list;
         return result;
     }
 
-    private List<T> transformList(Iterable<I> iterable) {
+    private List<T> transformList(Iterable<S> iterable) {
         List<T> list = new ArrayList<>();
-        for (I it : iterable) {
+        for (S it : iterable) {
             Assert.isInstanceOf(T_TYPE, it);
             list.add(T_TYPE.cast(it));
         }
@@ -73,46 +61,46 @@ public abstract class AbstractJpaInheritCrudService<I extends DatabaseObject<ID>
 
     @Override
     @Transactional(readOnly = true)
-    public List<I> findAll() {
+    public List<S> findAll() {
         return castList(getRepository().findAll());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<I> findAll(Sort sort) {
+    public List<S> findAll(Sort sort) {
         return castList(getRepository().findAll(sort));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<I> findAll(Pageable pageable) {
+    public Page<S> findAll(Pageable pageable) {
         @SuppressWarnings("unchecked")
-        Page<I> page = (Page<I>) getRepository().findAll(pageable);
+        Page<S> page = (Page<S>) getRepository().findAll(pageable);
         return page;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<I> findAll(Iterable<ID> ids) {
+    public List<S> findAll(Iterable<ID> ids) {
         return castList(getRepository().findAll(ids));
     }
 
     @Override
     @Transactional
-    public List<I> save(Iterable<I> entities) {
+    public List<S> save(Iterable<S> entities) {
         return castList(getRepository().save(transformList(entities)));
     }
 
     @Override
     @Transactional
-    public Optional<I> save(I entity) {
+    public Optional<S> save(S entity) {
         Assert.isInstanceOf(T_TYPE, entity);
         return Optional.ofNullable(getRepository().save(T_TYPE.cast(entity)));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<I> findOne(ID id) {
+    public Optional<S> findOne(ID id) {
         return Optional.ofNullable(getRepository().findOne(id));
     }
 
@@ -136,14 +124,14 @@ public abstract class AbstractJpaInheritCrudService<I extends DatabaseObject<ID>
 
     @Override
     @Transactional
-    public void delete(I entity) {
+    public void delete(S entity) {
         Assert.isInstanceOf(T_TYPE, entity);
         getRepository().delete(T_TYPE.cast(entity));
     }
 
     @Override
     @Transactional
-    public void delete(Iterable<I> entities) {
+    public void delete(Iterable<S> entities) {
         getRepository().delete(transformList(entities));
     }
 
