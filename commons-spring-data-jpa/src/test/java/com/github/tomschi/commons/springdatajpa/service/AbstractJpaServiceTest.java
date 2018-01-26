@@ -28,7 +28,7 @@ class AbstractJpaServiceTest {
     @Mock private Pageable pageable;
     @Mock private Sort sort;
 
-    private AbstractJpaService<FooJpaSequenceDbo, Long, JpaRepository<FooJpaSequenceDbo, Long>> service;
+    private FooJpaService service;
     private FooJpaSequenceDbo databaseObject1 = new FooJpaSequenceDbo(1L);
     private FooJpaSequenceDbo databaseObject2 = new FooJpaSequenceDbo(2L);
     private List<FooJpaSequenceDbo> dboList = Arrays.asList(databaseObject1, databaseObject2);
@@ -38,12 +38,7 @@ class AbstractJpaServiceTest {
     void init() {
         MockitoAnnotations.initMocks(this);
 
-        service = new AbstractJpaService<FooJpaSequenceDbo, Long, JpaRepository<FooJpaSequenceDbo,Long>>(repository) {
-            @Override
-            public FooJpaSequenceDbo newInstance() {
-                return new FooJpaSequenceDbo();
-            }
-        };
+        service = new FooJpaService(repository);
 
         when(page.getContent()).thenReturn(dboList);
 

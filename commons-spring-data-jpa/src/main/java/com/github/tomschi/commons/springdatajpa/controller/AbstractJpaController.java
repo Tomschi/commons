@@ -27,6 +27,11 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
     }
 
     @Override
+    public T newInstance() {
+        return getService().newInstance();
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<T> findAll() {
         return getService().findAll();

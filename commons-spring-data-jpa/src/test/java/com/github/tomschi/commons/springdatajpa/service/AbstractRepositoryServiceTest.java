@@ -1,6 +1,7 @@
 package com.github.tomschi.commons.springdatajpa.service;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
+import com.github.tomschi.commons.springdatajpa.dbo.FooJpaSequenceDbo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -13,26 +14,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class AbstractRepositoryServiceTest {
+class AbstractRepositoryServiceTest {
 
-    @Mock private JpaRepository<DatabaseObject<Long>, Long> repository;
-    @Mock private AbstractRepositoryService<JpaRepository<DatabaseObject<Long>, Long>> service;
+    @Mock private JpaRepository<FooJpaSequenceDbo, Long> repository;
 
     @BeforeAll
     void init() {
         MockitoAnnotations.initMocks(this);
-        when(service.getRepository()).thenReturn(repository);
     }
 
     @Test
     void testNullConstructor() {
         assertThrows(IllegalArgumentException.class,
-                () -> new AbstractRepositoryService<JpaRepository<DatabaseObject<Long>, Long>>(null){});
+                () -> new FooRepositoryService(null));
     }
 
     @Test
     void testGetRepository() {
-        assertNotNull(new AbstractRepositoryService<JpaRepository<DatabaseObject<Long>, Long>>(repository) {}.getRepository());
+        assertNotNull(new FooRepositoryService(repository).getRepository());
     }
 
 }

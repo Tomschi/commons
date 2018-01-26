@@ -31,7 +31,7 @@ class AbstractJpaSupertypeServiceTest {
     @Mock private Pageable pageable;
     @Mock private Sort sort;
 
-    private AbstractJpaSupertypeService<SequenceDatabaseObject, FooJpaSequenceDbo, Long, JpaRepository<FooJpaSequenceDbo, Long>> service;
+    private FooJpaSupertypeService service;
     private FooJpaSequenceDbo databaseObject1 = new FooJpaSequenceDbo(1L);
     private FooJpaSequenceDbo databaseObject2 = new FooJpaSequenceDbo(2L);
     private BarJpaSequenceDbo databaseObject3 = new BarJpaSequenceDbo(3L);
@@ -42,12 +42,7 @@ class AbstractJpaSupertypeServiceTest {
     void init() {
         MockitoAnnotations.initMocks(this);
 
-        service = new AbstractJpaSupertypeService<SequenceDatabaseObject, FooJpaSequenceDbo, Long, JpaRepository<FooJpaSequenceDbo, Long>>(repository) {
-            @Override
-            public SequenceDatabaseObject newInstance() {
-                return new FooJpaSequenceDbo();
-            }
-        };
+        service = new FooJpaSupertypeService(repository);
 
         when(page.getContent()).thenReturn(dboList);
 
