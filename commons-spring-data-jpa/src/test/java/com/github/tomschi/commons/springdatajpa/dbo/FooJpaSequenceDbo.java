@@ -9,6 +9,9 @@ public class FooJpaSequenceDbo extends AbstractJpaSequenceDbo {
     private static final long serialVersionUID = 4075372984930129344L;
     private Long id;
 
+    public FooJpaSequenceDbo() {
+    }
+
     public FooJpaSequenceDbo(Long id) {
         this.id = id;
     }
