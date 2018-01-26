@@ -1,16 +1,15 @@
-package com.github.tomschi.commons.data.service;
+package com.github.tomschi.commons.data.controller;
 
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
+import com.github.tomschi.commons.data.service.CrudDboService;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * The interface {@link CrudDboService} defines methods for all CRUD operations.
- * The methods are the same as in CrudRepository of the spring framework.
- * One difference is, that an {@link Optional} is returned instead of {@literal null}
- * values.
+ * The interface {@link CrudDboController} defines methods for all CRUD operations.
+ * The methods are the same as in {@link CrudDboService}.
  *
  * @param <T> The type of the {@link DatabaseObject}.
  * @param <ID> The id of the {@link DatabaseObject}.
@@ -18,7 +17,7 @@ import java.util.Optional;
  * @author Tomschi
  * @since 0.1.2
  */
-public interface CrudDboService<T extends DatabaseObject<ID>, ID extends Serializable> extends CrudService<T> {
+public interface CrudDboController<T extends DatabaseObject<ID>, ID extends Serializable> extends CrudController<T> {
 
     /**
      * Returns a {@link List} of all entities of type {@link T} of the given ids.
