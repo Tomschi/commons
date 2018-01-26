@@ -1,7 +1,7 @@
-package com.github.tomschi.commons.springdata.service;
+package com.github.tomschi.commons.springdata.controller;
 
+import com.github.tomschi.commons.data.controller.CrudDboController;
 import com.github.tomschi.commons.data.dbo.DatabaseObject;
-import com.github.tomschi.commons.data.service.CrudDboService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -10,16 +10,16 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * The interface {@link SortingAndPagingService} extends the {@link CrudDboService} interface with
+ * The interface {@link SortingAndPagingController} extends the {@link CrudDboController} interface with
  * {@link Pageable} and {@link Sort} methods.
  *
  * @param <T> The type of the {@link DatabaseObject}.
  * @param <ID> The id of the {@link DatabaseObject}.
  *
  * @author Tomschi
- * @since 0.1.1
+ * @since 0.1.2
  */
-public interface SortingAndPagingService<T extends DatabaseObject<ID>, ID extends Serializable> extends CrudDboService<T, ID> {
+public interface SortingAndPagingController<T extends DatabaseObject<ID>, ID extends Serializable> extends CrudDboController<T, ID> {
 
     /**
      * Returns a {@link List} of all {@link DatabaseObject}s of type {@link T} sorted by {@link Sort} property.
