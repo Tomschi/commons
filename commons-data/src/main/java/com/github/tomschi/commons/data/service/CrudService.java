@@ -19,6 +19,11 @@ import java.util.Optional;
 public interface CrudService<T extends DataObject> {
 
     /**
+     * @return A new instance of type {@link T}.
+     */
+    T newInstance();
+
+    /**
      * Returns a {@link List} of all objects of type {@link T}. In case no entity was found
      * an empty {@link List} is returned.
      *
