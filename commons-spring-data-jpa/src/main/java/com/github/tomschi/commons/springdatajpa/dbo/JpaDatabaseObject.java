@@ -13,5 +13,5 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.1.0
  */
-public interface JpaDatabaseObject<T extends Serializable> extends DatabaseObject<T>, Serializable {
+public interface JpaDatabaseObject<T extends Serializable> extends DatabaseObject<T> {
 }
