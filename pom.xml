@@ -42,6 +42,7 @@
         <module>commons-slf4j</module>
         <module>commons-spring-data</module>
         <module>commons-spring-data-jpa</module>
+        <module>commons-spring-data-web</module>
     </modules>
 
     <properties>
