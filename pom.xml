@@ -50,7 +50,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <junit5.version>5.0.2</junit5.version>
+        <junit5.version>5.0.3</junit5.version>
     </properties>
 
     <build>
