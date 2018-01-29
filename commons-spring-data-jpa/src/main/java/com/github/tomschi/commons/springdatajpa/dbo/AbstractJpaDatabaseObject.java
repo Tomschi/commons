@@ -45,7 +45,7 @@ public abstract class AbstractJpaDatabaseObject<T extends Serializable> implemen
     @Override
     public int hashCode() {
         if (getId() == null) return super.hashCode();
-        return this.getClass().getName().hashCode() * 13 + getId().hashCode();
+        return (this.getClass().getName().hashCode() * 13) + getId().hashCode();
     }
 
 }
