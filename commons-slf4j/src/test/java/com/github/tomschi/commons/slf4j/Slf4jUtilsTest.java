@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Tomschi
  * @since 0.1.1
  */
-public class Slf4jUtilsTest {
+class Slf4jUtilsTest {
 
     private final static TestLogger log = TestLoggerFactory.getTestLogger(Slf4jUtilsTest.class);
 

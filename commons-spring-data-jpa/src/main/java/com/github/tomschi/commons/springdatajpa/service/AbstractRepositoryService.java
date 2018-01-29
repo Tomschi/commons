@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
  */
 public abstract class AbstractRepositoryService<R extends JpaRepository<?, ?>> {
 
-    private R repository;
+    private final R repository;
 
     /**
      * Constructor with an repository of type {@link R} as parameter.

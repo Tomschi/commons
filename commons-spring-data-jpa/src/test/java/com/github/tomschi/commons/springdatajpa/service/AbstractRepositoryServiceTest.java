@@ -1,6 +1,5 @@
 package com.github.tomschi.commons.springdatajpa.service;
 
-import com.github.tomschi.commons.data.dbo.DatabaseObject;
 import com.github.tomschi.commons.springdatajpa.dbo.FooJpaSequenceDbo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AbstractRepositoryServiceTest {
