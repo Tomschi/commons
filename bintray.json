@@ -12,14 +12,14 @@
     "public_stats": false
   },
   "version": {
-    "name": "0.1.2",
-    "vcs_tag": "v0.1.2",
+    "name": "0.2.0",
+    "vcs_tag": "v0.2.0",
     "released": "2018-03-21"
   },
   "files": [
     {
       "includePattern": "pom.xml",
-      "uploadPattern": "com/github/tomschi/commons-parent/0.1.2/commons-parent-0.1.2.pom"
+      "uploadPattern": "com/github/tomschi/commons-parent/0.2.0/commons-parent-0.2.0.pom"
     }
   ],
   "publish": true
