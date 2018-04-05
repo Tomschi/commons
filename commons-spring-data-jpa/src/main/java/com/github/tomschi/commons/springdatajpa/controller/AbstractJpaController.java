@@ -18,7 +18,7 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
     private final S service;
 
     public AbstractJpaController(S service) {
-        Assert.notNull(service);
+        Assert.notNull(service, "The given service is null.");
         this.service = service;
     }
 
@@ -39,8 +39,8 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
 
     @Override
     @Transactional(readOnly = true)
-    public List<T> findAll(Iterable<ID> ids) {
-        return getService().findAll(ids);
+    public List<T> findAllById(Iterable<ID> ids) {
+        return getService().findAllById(ids);
     }
 
     @Override
@@ -57,26 +57,26 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<T> findOne(ID id) {
-        return getService().findOne(id);
+    public Optional<T> findById(ID id) {
+        return getService().findById(id);
     }
 
     @Override
     @Transactional
-    public Optional<T> save(T entity) {
+    public T save(T entity) {
         return getService().save(entity);
     }
 
     @Override
     @Transactional
-    public List<T> save(Iterable<T> entities) {
-        return getService().save(entities);
+    public List<T> saveAll(Iterable<T> entities) {
+        return getService().saveAll(entities);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public boolean exists(ID id) {
-        return getService().exists(id);
+    public boolean existsById(ID id) {
+        return getService().existsById(id);
     }
 
     @Override
@@ -87,8 +87,8 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
 
     @Override
     @Transactional
-    public void delete(ID id) {
-        getService().delete(id);
+    public void deleteById(ID id) {
+        getService().deleteById(id);
     }
 
     @Override
@@ -99,8 +99,8 @@ public abstract class AbstractJpaController<T extends DatabaseObject<ID>, ID ext
 
     @Override
     @Transactional
-    public void delete(Iterable<T> entities) {
-        getService().delete(entities);
+    public void deleteAll(Iterable<T> entities) {
+        getService().deleteAll(entities);
     }
 
     @Override

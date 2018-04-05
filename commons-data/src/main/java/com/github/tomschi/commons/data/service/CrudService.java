@@ -38,16 +38,16 @@ public interface CrudService<T extends DataObject> {
      * @return A {@link List} of entities of type {@link T}.
      * @throws IllegalArgumentException in case the given {@link Iterable} is {@literal null}.
      */
-    List<T> save(Iterable<T> entities);
+    List<T> saveAll(Iterable<T> entities);
 
     /**
      * Saves the given entity of type {@link T} and returns the saved and refreshed entity.
      *
      * @param entity The entity to save. Cannot be {@literal null}.
-     * @return An {@link Optional} of the saved entity of type {@link T}.
+     * @return The saved entity. Cannot be {@literal null}.
      * @throws IllegalArgumentException in case the given {@code entity} is {@literal null}.
      */
-    Optional<T> save(T entity);
+    T save(T entity);
 
     /**
      * Returns the number of all entities of type {@link T}.
@@ -70,7 +70,7 @@ public interface CrudService<T extends DataObject> {
      * @param entities An {@link Iterable} of entities. Cannot be {@literal null}.
      * @throws IllegalArgumentException in case the given {@link Iterable} is {@literal null}.
      */
-    void delete(Iterable<T> entities);
+    void deleteAll(Iterable<T> entities);
 
     /**
      * Deletes all entities of type {@link T}.

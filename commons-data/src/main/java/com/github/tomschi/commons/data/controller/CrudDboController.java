@@ -27,7 +27,7 @@ public interface CrudDboController<T extends DatabaseObject<ID>, ID extends Seri
      * @return A {@link List} of entities.
      * @throws IllegalArgumentException in case the given {@link Iterable} is {@literal null}.
      */
-    List<T> findAll(Iterable<ID> ids);
+    List<T> findAllById(Iterable<ID> ids);
 
     /**
      * Returns the entity of type {@link T} with the given {@code id} of type {@link ID}.
@@ -36,7 +36,7 @@ public interface CrudDboController<T extends DatabaseObject<ID>, ID extends Seri
      * @return An {@link Optional} of the entity.
      * @throws IllegalArgumentException in case the given {@code id} is {@literal null}.
      */
-    Optional<T> findOne(ID id);
+    Optional<T> findById(ID id);
 
     /**
      * Checks if a entity of type {@link T} with the given {@code id} of type {@link ID} exists.
@@ -45,7 +45,7 @@ public interface CrudDboController<T extends DatabaseObject<ID>, ID extends Seri
      * @return {@literal true} if the entity exists, else {@literal false}.
      * @throws IllegalArgumentException in case the given {@code id} is {@literal null}.
      */
-    boolean exists(ID id);
+    boolean existsById(ID id);
 
     /**
      * Deletes the entity of type {@link T} with the given {@code id} of type {@link ID}.
@@ -53,6 +53,6 @@ public interface CrudDboController<T extends DatabaseObject<ID>, ID extends Seri
      * @param id The id of an entity. Cannot be {@literal null}.
      * @throws IllegalArgumentException in case the given {@code id} is {@literal null}
      */
-    void delete(ID id);
+    void deleteById(ID id);
 
 }

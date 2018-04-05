@@ -37,8 +37,8 @@ public abstract class AbstractJpaService<T extends DatabaseObject<ID>, ID extend
 
     @Override
     @Transactional(readOnly = true)
-    public List<T> findAll(Iterable<ID> ids) {
-        return getRepository().findAll(ids);
+    public List<T> findAllById(Iterable<ID> ids) {
+        return getRepository().findAllById(ids);
     }
 
     @Override
@@ -55,26 +55,26 @@ public abstract class AbstractJpaService<T extends DatabaseObject<ID>, ID extend
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<T> findOne(ID id) {
-        return Optional.ofNullable(getRepository().findOne(id));
+    public Optional<T> findById(ID id) {
+        return getRepository().findById(id);
     }
 
     @Override
     @Transactional
-    public Optional<T> save(T entity) {
-        return Optional.ofNullable(getRepository().save(entity));
+    public T save(T entity) {
+        return getRepository().save(entity);
     }
 
     @Override
     @Transactional
-    public List<T> save(Iterable<T> entities) {
-        return getRepository().save(entities);
+    public List<T> saveAll(Iterable<T> entities) {
+        return getRepository().saveAll(entities);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public boolean exists(ID id) {
-        return getRepository().exists(id);
+    public boolean existsById(ID id) {
+        return getRepository().existsById(id);
     }
 
     @Override
@@ -85,8 +85,8 @@ public abstract class AbstractJpaService<T extends DatabaseObject<ID>, ID extend
 
     @Override
     @Transactional
-    public void delete(ID id) {
-        getRepository().delete(id);
+    public void deleteById(ID id) {
+        getRepository().deleteById(id);
     }
 
     @Override
@@ -97,8 +97,8 @@ public abstract class AbstractJpaService<T extends DatabaseObject<ID>, ID extend
 
     @Override
     @Transactional
-    public void delete(Iterable<T> entities) {
-        getRepository().delete(entities);
+    public void deleteAll(Iterable<T> entities) {
+        getRepository().deleteAll(entities);
     }
 
     @Override

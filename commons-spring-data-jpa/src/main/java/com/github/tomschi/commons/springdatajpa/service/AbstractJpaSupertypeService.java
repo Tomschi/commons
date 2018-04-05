@@ -81,33 +81,33 @@ public abstract class AbstractJpaSupertypeService<S extends DatabaseObject<ID>, 
 
     @Override
     @Transactional(readOnly = true)
-    public List<S> findAll(Iterable<ID> ids) {
-        return castList(getRepository().findAll(ids));
+    public List<S> findAllById(Iterable<ID> ids) {
+        return castList(getRepository().findAllById(ids));
     }
 
     @Override
     @Transactional
-    public List<S> save(Iterable<S> entities) {
-        return castList(getRepository().save(transformList(entities)));
+    public List<S> saveAll(Iterable<S> entities) {
+        return castList(getRepository().saveAll(transformList(entities)));
     }
 
     @Override
     @Transactional
-    public Optional<S> save(S entity) {
+    public S save(S entity) {
         Assert.isInstanceOf(T_TYPE, entity);
-        return Optional.ofNullable(getRepository().save(T_TYPE.cast(entity)));
+        return getRepository().save(T_TYPE.cast(entity));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<S> findOne(ID id) {
-        return Optional.ofNullable(getRepository().findOne(id));
+    public Optional<S> findById(ID id) {
+        return Optional.ofNullable(getRepository().findById(id).get());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public boolean exists(ID id) {
-        return getRepository().exists(id);
+    public boolean existsById(ID id) {
+        return getRepository().existsById(id);
     }
 
     @Override
@@ -118,8 +118,8 @@ public abstract class AbstractJpaSupertypeService<S extends DatabaseObject<ID>, 
 
     @Override
     @Transactional
-    public void delete(ID id) {
-        getRepository().delete(id);
+    public void deleteById(ID id) {
+        getRepository().deleteById(id);
     }
 
     @Override
@@ -131,8 +131,8 @@ public abstract class AbstractJpaSupertypeService<S extends DatabaseObject<ID>, 
 
     @Override
     @Transactional
-    public void delete(Iterable<S> entities) {
-        getRepository().delete(transformList(entities));
+    public void deleteAll(Iterable<S> entities) {
+        getRepository().deleteAll(transformList(entities));
     }
 
     @Override
