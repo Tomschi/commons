@@ -40,8 +40,6 @@
         <module>commons-aspect</module>
         <module>commons-data</module>
         <module>commons-slf4j</module>
-        <module>commons-spring-data</module>
-        <module>commons-spring-data-jpa</module>
     </modules>
 
     <properties>
