@@ -36,6 +36,7 @@
     </scm>
 
     <modules>
+        <module>commons</module>
         <module>commons-annotation</module>
         <module>commons-aspect</module>
         <module>commons-data</module>
