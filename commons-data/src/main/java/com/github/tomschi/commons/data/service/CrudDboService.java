@@ -1,6 +1,6 @@
 package com.github.tomschi.commons.data.service;
 
-import com.github.tomschi.commons.data.dbo.DatabaseObject;
+import com.github.tomschi.commons.data.dbo.PrimaryKeyDbo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,13 +12,13 @@ import java.util.Optional;
  * One difference is, that an {@link Optional} is returned instead of {@literal null}
  * values.
  *
- * @param <T> The type of the {@link DatabaseObject}.
- * @param <ID> The id of the {@link DatabaseObject}.
+ * @param <T> The type of the {@link PrimaryKeyDbo}.
+ * @param <ID> The id of the {@link PrimaryKeyDbo}.
  *
  * @author Tomschi
  * @since 0.1.2
  */
-public interface CrudDboService<T extends DatabaseObject<ID>, ID extends Serializable> extends CrudService<T> {
+public interface CrudDboService<T extends PrimaryKeyDbo<ID>, ID extends Serializable> extends CrudService<T> {
 
     /**
      * Returns a {@link List} of all entities of type {@link T} of the given ids.

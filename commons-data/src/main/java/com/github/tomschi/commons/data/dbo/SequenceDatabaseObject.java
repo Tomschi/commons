@@ -7,5 +7,6 @@ package com.github.tomschi.commons.data.dbo;
  * @author Tomschi
  * @since 0.1.1
  */
-public interface SequenceDatabaseObject extends DatabaseObject<Long> {
+@Deprecated
+public interface SequenceDatabaseObject extends PrimaryKeyDbo<Long> {
 }
