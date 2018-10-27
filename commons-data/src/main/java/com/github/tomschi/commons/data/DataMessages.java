@@ -4,7 +4,7 @@ import com.github.tomschi.commons.message.MessageSupplierStore;
 
 import java.util.function.Supplier;
 
-public class DataMessages {
+public abstract class DataMessages {
 
     private static final String CREATE_BEFORE_SAVE_MSG = "The object must be created first. Then the save method can be called.";
     private static final String PARAM_NOT_PERSIST_MSG = "The %s must be persisted first.";
