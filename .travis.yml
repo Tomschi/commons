@@ -6,7 +6,7 @@ after_success:
 
 deploy:
   provider: script
-  script: "mvn deploy"
+  script: "mvn deploy -DskipTests"
   skip_cleanup: true
   on:
     branch: refactor
