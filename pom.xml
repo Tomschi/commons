@@ -16,6 +16,7 @@
     <name>commons-parent</name>
     <description>Parent pom different commons modules</description>
     <url>https://github.com/Tomschi/commons-parent</url>
+    <inceptionYear>2018</inceptionYear>
 
     <licenses>
         <license>
