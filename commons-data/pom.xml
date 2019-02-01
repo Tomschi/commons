@@ -11,14 +11,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>commons-data</artifactId>
-    <packaging>jar</packaging>
+    <name>commons-data</name>
 
     <dependencies>
         <dependency>
             <groupId>com.github.tomschi</groupId>
             <artifactId>commons</artifactId>
-            <version>0.2.1-SNAPSHOT</version>
+            <version>${commons.version}</version>
         </dependency>
     </dependencies>
-
 </project>

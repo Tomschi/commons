@@ -6,19 +6,18 @@
         <artifactId>commons-parent</artifactId>
         <groupId>com.github.tomschi</groupId>
         <version>0.2.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>commons-annotation</artifactId>
-    <packaging>jar</packaging>
+    <name>commons-annotation</name>
 
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
-
 </project>
