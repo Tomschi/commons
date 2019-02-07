@@ -19,6 +19,8 @@
  */
 package com.github.tomschi.commons.data.dto.rest;
 
+import java.io.Serializable;
+
 /**
  * The abstract class {@link AbstractRESTIdentifiableDto} can be used
  * for rest data transfer objects with an identifier. This class
@@ -29,7 +31,7 @@ package com.github.tomschi.commons.data.dto.rest;
  * @since 0.1.0
  * @author Tomschi
  */
-public abstract class AbstractRESTIdentifiableDto<T> implements RESTIdentifiableDto<T> {
+public abstract class AbstractRESTIdentifiableDto<T extends Serializable> implements RESTIdentifiableDto<T> {
 
     private static final long serialVersionUID = 1L;
 

@@ -17,29 +17,31 @@
  * limitations under the License.
  * #L%
  */
-package com.github.tomschi.commons.data.dto.rest;
+package com.github.tomschi.commons.data.dbo;
 
-/**
- * @author Tomschi
- * @since 0.1.0
- */
-public class BarRESTIdentifiableDto extends AbstractRESTIdentifiableDto<Long> {
+import org.junit.jupiter.api.Test;
 
-    private static final long serialVersionUID = -6373297428770046024L;
-    private Long id;
+import java.io.Serializable;
+import java.util.List;
 
-    public BarRESTIdentifiableDto(Long id) {
-        this.id = id;
-    }
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+class AbstractCompositeKeyDboTest {
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+    @Test
+    void test() {
+        AbstractCompositeKeyDbo compositeKeyDbo = new AbstractCompositeKeyDbo() {
+
+            private static final long serialVersionUID = 2432786405086553979L;
+
+            @Override
+            public List<? extends Serializable> getIdValues() {
+                return null;
+            }
+
+        };
+
+        assertNotNull(compositeKeyDbo);
     }
 
 }

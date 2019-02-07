@@ -39,8 +39,11 @@ public abstract class AbstractIdentifiable<T extends Serializable> implements Id
      */
     @Override
     public int hashCode() {
-        if (getId() == null) return super.hashCode();
-        return (this.getClass().getName().hashCode() * 13) + getId().hashCode();
+        if (getId() != null) {
+            return (this.getClass().getName().hashCode() * 13) + getId().hashCode();
+        } else {
+            return super.hashCode();
+        }
     }
 
     /**
@@ -57,9 +60,12 @@ public abstract class AbstractIdentifiable<T extends Serializable> implements Id
      */
     @Override
     public boolean equals(Object obj) {
-        if (getId() == null) return super.equals(obj);
-        return (this.getClass() == obj.getClass())
-                && getId().equals(((Identifiable<?>) obj).getId());
+        if (getId() != null) {
+            return (this.getClass() == obj.getClass())
+                    && getId().equals(((Identifiable<?>) obj).getId());
+        } else {
+            return super.equals(obj);
+        }
     }
 
 }

@@ -28,21 +28,64 @@ class AbstractIdentifiableTest {
 
     @Test
     void testHashCode() {
-        BarIdentifiable barIdentifiable = new BarIdentifiable(1L);
-        FooIdentifiable fooIdentifiable = new FooIdentifiable(1L);
+        Identifiable<Long> barIdentifiable = new BarIdentifiable(1L);
+        Identifiable<Long> fooIdentifiable = new FooIdentifiable(1L);
 
         int hash = barIdentifiable.getClass().getName().hashCode() * 13 + (Integer.valueOf(1).hashCode());
         assertEquals(hash, barIdentifiable.hashCode());
 
         assertNotEquals(barIdentifiable.hashCode(), fooIdentifiable.hashCode());
+        assertNotEquals(new BarIdentifiable(null).hashCode(), new BarIdentifiable(null).hashCode());
     }
 
     @Test
     void testEquals() {
-        BarIdentifiable barIdentifiable = new BarIdentifiable(1L);
-        FooIdentifiable fooIdentifiable = new FooIdentifiable(1L);
+        Identifiable<Long> barIdentifiable = new BarIdentifiable(1L);
+        Identifiable<Long> fooIdentifiable = new FooIdentifiable(1L);
 
         assertEquals(barIdentifiable, barIdentifiable);
         assertNotEquals(barIdentifiable, fooIdentifiable);
+        assertNotEquals(new BarIdentifiable(null), new BarIdentifiable(null));
     }
+
+    private class BarIdentifiable extends AbstractIdentifiable<Long> {
+
+        private Long id;
+
+        private BarIdentifiable(Long id) {
+            this.id = id;
+        }
+
+        @Override
+        public Long getId() {
+            return this.id;
+        }
+
+        @Override
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+    }
+
+    private class FooIdentifiable extends AbstractIdentifiable<Long> {
+
+        private Long id;
+
+        private FooIdentifiable(Long id) {
+            this.id = id;
+        }
+
+        @Override
+        public Long getId() {
+            return this.id;
+        }
+
+        @Override
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+    }
+
 }

@@ -17,24 +17,33 @@
  * limitations under the License.
  * #L%
  */
-package com.github.tomschi.commons.data;
+package com.github.tomschi.commons.data.dbo;
 
-public class FooIdentifiable extends AbstractIdentifiable<Long> {
+import org.junit.jupiter.api.Test;
 
-    private Long id;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-    public FooIdentifiable(Long id) {
-        this.id = id;
-    }
+class AbstractPrimaryKeyDboTest {
 
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+    @Test
+    void test() {
+        AbstractPrimaryKeyDbo<Long> primaryKeyDbo = new AbstractPrimaryKeyDbo<Long>() {
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+            private static final long serialVersionUID = -2939171917294336919L;
+
+            @Override
+            public Long getId() {
+                return null;
+            }
+
+            @Override
+            public void setId(Long id) {
+
+            }
+
+        };
+
+        assertNotNull(primaryKeyDbo);
     }
 
 }

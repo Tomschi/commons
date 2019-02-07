@@ -24,19 +24,29 @@ import java.util.List;
 
 public abstract class AbstractCompositeIdentifiable implements CompositeIdentifiable {
 
+    private boolean isIdValuesValid(List<? extends Serializable> idList) {
+        return idList != null && !idList.isEmpty() && !idList.contains(null);
+    }
+
     @Override
     public int hashCode() {
         List<? extends Serializable> idList = getIdValues();
-        if (idList.contains(null)) return super.hashCode();
-        return (this.getClass().getName().hashCode() * 13) + idList.stream().mapToInt(Object::hashCode).sum();
+        if (isIdValuesValid(idList)) {
+            return (this.getClass().getName().hashCode() * 13) + idList.stream().mapToInt(Object::hashCode).sum();
+        } else {
+            return super.hashCode();
+        }
     }
 
     @Override
     public boolean equals(Object obj) {
         List<? extends Serializable> idList = getIdValues();
-        if (idList.contains(null)) return super.equals(obj);
-        return (this.getClass() == obj.getClass())
-                && idList.equals(((CompositeIdentifiable) obj).getIdValues());
+        if (isIdValuesValid(idList)) {
+            return (this.getClass() == obj.getClass())
+                    && idList.equals(((CompositeIdentifiable) obj).getIdValues());
+        } else {
+            return super.equals(obj);
+        }
     }
 
 }

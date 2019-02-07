@@ -62,4 +62,46 @@ class AbstractRESTIdentifiableDtoTest {
         assertEquals(first.hashCode(), first.hashCode());
     }
 
+    private class BarRESTIdentifiableDto extends AbstractRESTIdentifiableDto<Long> {
+
+        private static final long serialVersionUID = 8000065652142550795L;
+        private Long id;
+
+        private BarRESTIdentifiableDto(Long id) {
+            this.id = id;
+        }
+
+        @Override
+        public Long getId() {
+            return this.id;
+        }
+
+        @Override
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+    }
+
+    private class FooRESTIdentifiableDto extends AbstractRESTIdentifiableDto<Long> {
+
+        private static final long serialVersionUID = 8355580289509165199L;
+        private Long id;
+
+        private FooRESTIdentifiableDto(Long id) {
+            this.id = id;
+        }
+
+        @Override
+        public Long getId() {
+            return this.id;
+        }
+
+        @Override
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+    }
+
 }
