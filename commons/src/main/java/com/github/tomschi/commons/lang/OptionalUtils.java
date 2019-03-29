@@ -22,7 +22,10 @@ package com.github.tomschi.commons.lang;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
-public abstract class OptionalUtils {
+public final class OptionalUtils {
+
+    private OptionalUtils() {
+    }
 
     @Nonnull
     public static <T> Optional<T> optionalOf(@Nonnull Optional<? extends T> optional) {

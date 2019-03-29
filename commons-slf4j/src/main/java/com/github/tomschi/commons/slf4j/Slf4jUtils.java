@@ -31,7 +31,10 @@ import org.slf4j.event.Level;
  * @author Tomschi
  * @since 0.1.1
  */
-public class Slf4jUtils {
+public final class Slf4jUtils {
+
+    private Slf4jUtils() {
+    }
 
     private static void logHelper(Logger logger, Level level, String string, Object... arguments) {
         switch (level) {

@@ -22,10 +22,13 @@ package com.github.tomschi.commons.message;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public abstract class Messages {
+public final class Messages {
 
     private static final String PARAM_NOT_NULL_MSG = "The given method parameter {0} must not be null.";
     private static final String PARAM_TYPE_NOT_SUPPORTED_MSG = "The type {0} of parameter {1} is not supported. Only types of {2} are allowed.";
+
+    private Messages() {
+    }
 
     @Nonnull
     public static String paramNotNullMsg(@Nonnull String parameterName) {

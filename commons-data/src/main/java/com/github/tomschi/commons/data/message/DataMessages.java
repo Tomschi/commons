@@ -23,10 +23,13 @@ import com.github.tomschi.commons.message.MessageGenerator;
 
 import javax.annotation.Nonnull;
 
-public abstract class DataMessages {
+public final class DataMessages {
 
     private static final String PARAM_NOT_PERSIST_MSG = "The parameter {0} must be persisted first.";
     private static final String PARAM_PRODUCE_CYCLE_MSG = "The given parameters produces a cycle.";
+
+    private DataMessages() {
+    }
 
     @Nonnull
     public static String paramNotPersistMsg(@Nonnull String parameterName) {
