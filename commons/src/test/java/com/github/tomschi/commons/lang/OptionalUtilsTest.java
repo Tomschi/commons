@@ -19,14 +19,20 @@
  */
 package com.github.tomschi.commons.lang;
 
-import javax.annotation.Nonnull;
+import org.junit.jupiter.api.Test;
+
 import java.util.Optional;
 
-public class OptionalUtils {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Nonnull
-    public static <T> Optional<T> optionalOf(@Nonnull Optional<? extends T> optional) {
-        return optional.isPresent() ? Optional.of(optional.get()) : Optional.empty();
+class OptionalUtilsTest {
+
+    @Test
+    void testOptionalOf() {
+        Optional<Number> number;
+        Optional<Integer> integer = Optional.of(1);
+        number = OptionalUtils.optionalOf(integer);
+        assertEquals(1, number.get());
     }
 
 }
