@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OptionalUtilsTest {
 
@@ -32,7 +32,11 @@ class OptionalUtilsTest {
         Optional<Number> number;
         Optional<Integer> integer = Optional.of(1);
         number = OptionalUtils.optionalOf(integer);
+        assertTrue(number.isPresent());
         assertEquals(1, number.get());
+
+        number = OptionalUtils.optionalOf(Optional.empty());
+        assertFalse(number.isPresent());
     }
 
 }
