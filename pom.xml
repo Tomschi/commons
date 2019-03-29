@@ -16,7 +16,7 @@
 
     <name>commons-parent</name>
     <description>Parent pom different commons modules</description>
-    <url>https://github.com/Tomschi/commons-parent</url>
+    <url>https://github.com/Tomschi/commons</url>
     <inceptionYear>2018</inceptionYear>
 
     <licenses>
@@ -30,7 +30,7 @@
     <developers>
         <developer>
             <name>Tomschi</name>
-            <email>tomschi@users.noreply.github.com</email>
+            <email>codingtomschi@gmail.com</email>
         </developer>
     </developers>
 
@@ -52,10 +52,17 @@
     <properties>
         <java.version>1.8</java.version>
         <commons.version>${project.version}</commons.version>
+        <jsr305.version>3.0.2</jsr305.version>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
