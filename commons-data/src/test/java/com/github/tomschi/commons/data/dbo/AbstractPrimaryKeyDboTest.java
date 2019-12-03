@@ -21,29 +21,75 @@ package com.github.tomschi.commons.data.dbo;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class AbstractPrimaryKeyDboTest {
 
     @Test
-    void test() {
-        AbstractPrimaryKeyDbo<Long> primaryKeyDbo = new AbstractPrimaryKeyDbo<Long>() {
+    void testHashCode() {
+        PrimaryKeyDbo<Long> barPrimaryKeyDbo = new BarPrimaryKeyDbo(1L);
+        PrimaryKeyDbo<Long> fooPrimaryKeyDbo = new FooPrimaryKeyDbo(1L);
 
-            private static final long serialVersionUID = -2939171917294336919L;
+        int hash = barPrimaryKeyDbo.getClass().getName().hashCode() * 13 + (Integer.valueOf(1).hashCode());
+        assertEquals(hash, barPrimaryKeyDbo.hashCode());
 
-            @Override
-            public Long getId() {
-                return null;
-            }
+        assertNotEquals(barPrimaryKeyDbo.hashCode(), fooPrimaryKeyDbo.hashCode());
+        assertNotEquals(new BarPrimaryKeyDbo(null).hashCode(), new BarPrimaryKeyDbo(null).hashCode());
+    }
 
-            @Override
-            public void setId(Long id) {
+    @Test
+    void testEquals() {
+        PrimaryKeyDbo<Long> barPrimaryKeyDbo = new BarPrimaryKeyDbo(1L);
+        PrimaryKeyDbo<Long> fooPrimaryKeyDbo = new FooPrimaryKeyDbo(1L);
 
-            }
+        assertEquals(barPrimaryKeyDbo, barPrimaryKeyDbo);
+        assertNotEquals(barPrimaryKeyDbo, fooPrimaryKeyDbo);
+        assertNotEquals(new BarPrimaryKeyDbo(null), new BarPrimaryKeyDbo(null));
+    }
 
-        };
+    private class BarPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
 
-        assertNotNull(primaryKeyDbo);
+        private static final long serialVersionUID = 8412755344352059966L;
+
+        private Long primaryKey;
+
+        public BarPrimaryKeyDbo(Long primaryKey) {
+            this.primaryKey = primaryKey;
+        }
+
+        @Override
+        public Long getPrimaryKey() {
+            return primaryKey;
+        }
+
+        @Override
+        public void setPrimaryKey(Long primaryKey) {
+            this.primaryKey = primaryKey;
+        }
+
+    }
+
+    private class FooPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
+
+        private static final long serialVersionUID = -9056338751575122354L;
+
+        private Long primaryKey;
+
+        public FooPrimaryKeyDbo(Long primaryKey) {
+            this.primaryKey = primaryKey;
+        }
+
+        @Override
+        public Long getPrimaryKey() {
+            return primaryKey;
+        }
+
+        @Override
+        public void setPrimaryKey(Long primaryKey) {
+            this.primaryKey = primaryKey;
+        }
+
     }
 
 }

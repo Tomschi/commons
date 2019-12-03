@@ -20,15 +20,21 @@
 package com.github.tomschi.commons.data.dbo;
 
 import java.io.Serializable;
+import java.util.List;
 
-public abstract class AbstractPrimaryKeyDbo<T extends Serializable> implements PrimaryKeyDbo<T> {
+public abstract class AbstractCompositePrimaryKeyDbo implements CompositePrimaryKeyDbo {
 
     private static final long serialVersionUID = 1L;
 
+    private boolean isPrimaryKeyValuesValid(List<? extends Serializable> idList) {
+        return idList != null && !idList.isEmpty() && !idList.contains(null);
+    }
+
     @Override
     public int hashCode() {
-        if (getPrimaryKey() != null) {
-            return (this.getClass().getName().hashCode() * 13) + getPrimaryKey().hashCode();
+        List<? extends Serializable> primaryKeyList = getPrimaryKeyValues();
+        if (isPrimaryKeyValuesValid(primaryKeyList)) {
+            return (this.getClass().getName().hashCode() * 13) + primaryKeyList.stream().mapToInt(Object::hashCode).sum();
         } else {
             return super.hashCode();
         }
@@ -36,9 +42,10 @@ public abstract class AbstractPrimaryKeyDbo<T extends Serializable> implements P
 
     @Override
     public boolean equals(Object obj) {
-        if (getPrimaryKey() != null) {
+        List<? extends Serializable> primaryKeyList = getPrimaryKeyValues();
+        if (isPrimaryKeyValuesValid(primaryKeyList)) {
             return (this.getClass() == obj.getClass())
-                    && getPrimaryKey().equals(((PrimaryKeyDbo<?>) obj).getPrimaryKey());
+                    && primaryKeyList.equals(((CompositePrimaryKeyDbo) obj).getPrimaryKeyValues());
         } else {
             return super.equals(obj);
         }

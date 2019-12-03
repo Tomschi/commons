@@ -35,12 +35,12 @@ class AbstractCompositeIdentifiableTest {
         List<? extends Serializable> idList1 = Arrays.asList(1L, "KEY");
         List<? extends Serializable> idList2 = Arrays.asList(1L, "KEY");
 
-        CompositeIdentifiable barCompositeIdentifiable1 = new BarCompositeIdentifiable(idList1);
-        CompositeIdentifiable barCompositeIdentifiable2 = new BarCompositeIdentifiable(idList2);
+        CompositeIdentifiable barCompositeIdentifiable = new BarCompositeIdentifiable(idList1);
+        CompositeIdentifiable fooCompositeIdentifiable = new FooCompositeIdentifiable(idList2);
 
         int hashCode = BarCompositeIdentifiable.class.getName().hashCode() * 13 + idList1.stream().mapToInt(Object::hashCode).sum();
-        assertEquals(hashCode, barCompositeIdentifiable1.hashCode());
-        assertEquals(barCompositeIdentifiable1.hashCode(), barCompositeIdentifiable2.hashCode());
+        assertEquals(hashCode, barCompositeIdentifiable.hashCode());
+        assertNotEquals(barCompositeIdentifiable.hashCode(), fooCompositeIdentifiable.hashCode());
         assertNotEquals(new BarCompositeIdentifiable(null).hashCode(), new BarCompositeIdentifiable(null).hashCode());
     }
 
@@ -54,7 +54,6 @@ class AbstractCompositeIdentifiableTest {
 
         CompositeIdentifiable fooCompositeIdentifiable1 = new FooCompositeIdentifiable(idList1);
 
-        assertEquals(barCompositeIdentifiable1, barCompositeIdentifiable1);
         assertEquals(barCompositeIdentifiable1, barCompositeIdentifiable1);
         assertEquals(barCompositeIdentifiable1, barCompositeIdentifiable2);
         assertNotEquals(barCompositeIdentifiable1, fooCompositeIdentifiable1);

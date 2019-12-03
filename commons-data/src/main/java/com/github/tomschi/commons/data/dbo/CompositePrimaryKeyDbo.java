@@ -19,29 +19,11 @@
  */
 package com.github.tomschi.commons.data.dbo;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.Serializable;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+public interface CompositePrimaryKeyDbo extends DatabaseObject {
 
-class AbstractCompositeKeyDboTest {
-
-    @Test
-    void test() {
-        AbstractCompositeKeyDbo compositeKeyDbo = new AbstractCompositeKeyDbo() {
-
-            private static final long serialVersionUID = 2432786405086553979L;
-
-            @Override
-            public List<? extends Serializable> getIdValues() {
-                return null;
-            }
-
-        };
-
-        assertNotNull(compositeKeyDbo);
-    }
+    List<? extends Serializable> getPrimaryKeyValues();
 
 }

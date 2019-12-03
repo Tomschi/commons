@@ -19,8 +19,6 @@
  */
 package com.github.tomschi.commons.data.dbo;
 
-import com.github.tomschi.commons.data.Identifiable;
-
 import java.io.Serializable;
 
 /**
@@ -31,5 +29,10 @@ import java.io.Serializable;
  * @author Tomschi
  * @since 0.2.1
  */
-public interface PrimaryKeyDbo<T extends Serializable> extends DatabaseObject, Identifiable<T> {
+public interface PrimaryKeyDbo<T extends Serializable> extends DatabaseObject {
+
+    T getPrimaryKey();
+
+    void setPrimaryKey(T primaryKey);
+
 }
