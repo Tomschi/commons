@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
 public final class Messages {
 
     private static final String PARAM_NOT_NULL_MSG = "The given method parameter {0} must not be null.";
+    private static final String PARAM_NOT_NUMERIC_MSG = "The given method parameter {0} must be numeric.";
     private static final String PARAM_TYPE_NOT_SUPPORTED_MSG = "The type {0} of parameter {1} is not supported. Only types of {2} are allowed.";
 
     private Messages() {
@@ -33,6 +34,11 @@ public final class Messages {
     @Nonnull
     public static String paramNotNullMsg(@Nonnull String parameterName) {
         return MessageGenerator.getMessage(PARAM_NOT_NULL_MSG, parameterName);
+    }
+
+    @Nonnull
+    public static String paramNotNumericMsg(@Nonnull String parameterName) {
+        return MessageGenerator.getMessage(PARAM_NOT_NUMERIC_MSG, parameterName);
     }
 
     @Nonnull

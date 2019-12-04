@@ -25,10 +25,16 @@ import javax.annotation.Nonnull;
 
 public final class DataMessages {
 
+    private static final String PARAM_ALREADY_EXISTS_MSG = "The parameter {0} with id {1} already exists.";
     private static final String PARAM_NOT_PERSIST_MSG = "The parameter {0} must be persisted first.";
     private static final String PARAM_PRODUCE_CYCLE_MSG = "The given parameters produces a cycle.";
 
     private DataMessages() {
+    }
+
+    @Nonnull
+    public static String paramAlreadyExistsMsg(@Nonnull String parameterName, @Nonnull String id) {
+        return MessageGenerator.getMessage(PARAM_ALREADY_EXISTS_MSG, parameterName, id);
     }
 
     @Nonnull
