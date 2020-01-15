@@ -24,6 +24,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * @author Tomschi
+ */
 class AbstractIdentifiableTest {
 
     @Test
@@ -40,11 +43,13 @@ class AbstractIdentifiableTest {
 
     @Test
     void testEquals() {
-        Identifiable<Long> barIdentifiable = new BarIdentifiable(1L);
+        Identifiable<Long> barIdentifiable1 = new BarIdentifiable(1L);
+        Identifiable<Long> barIdentifiable2 = new BarIdentifiable(2L);
         Identifiable<Long> fooIdentifiable = new FooIdentifiable(1L);
 
-        assertEquals(barIdentifiable, barIdentifiable);
-        assertNotEquals(barIdentifiable, fooIdentifiable);
+        assertEquals(barIdentifiable1, barIdentifiable1);
+        assertNotEquals(barIdentifiable1, barIdentifiable2);
+        assertNotEquals(barIdentifiable1, fooIdentifiable);
         assertNotEquals(new BarIdentifiable(null), new BarIdentifiable(null));
     }
 

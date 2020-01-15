@@ -22,12 +22,16 @@ package com.github.tomschi.commons.data;
 import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * @author Tomschi
+ */
 class AbstractCompositeIdentifiableTest {
 
     @Test
@@ -48,14 +52,20 @@ class AbstractCompositeIdentifiableTest {
     void testEquals() {
         List<? extends Serializable> idList1 = Arrays.asList(1L, "KEY");
         List<? extends Serializable> idList2 = Arrays.asList(1L, "KEY");
+        List<? extends Serializable> idList3 = Arrays.asList(2L, "KEY");
 
         CompositeIdentifiable barCompositeIdentifiable1 = new BarCompositeIdentifiable(idList1);
         CompositeIdentifiable barCompositeIdentifiable2 = new BarCompositeIdentifiable(idList2);
+        CompositeIdentifiable barCompositeIdentifiable3 = new BarCompositeIdentifiable(idList3);
 
         CompositeIdentifiable fooCompositeIdentifiable1 = new FooCompositeIdentifiable(idList1);
 
         assertEquals(barCompositeIdentifiable1, barCompositeIdentifiable1);
         assertEquals(barCompositeIdentifiable1, barCompositeIdentifiable2);
+        assertNotEquals(barCompositeIdentifiable1, barCompositeIdentifiable3);
+        assertNotEquals(new BarCompositeIdentifiable(null), barCompositeIdentifiable1);
+        assertNotEquals(new BarCompositeIdentifiable(new ArrayList<>()), barCompositeIdentifiable1);
+        assertNotEquals(new BarCompositeIdentifiable(Arrays.asList(null, null)), barCompositeIdentifiable1);
         assertNotEquals(barCompositeIdentifiable1, fooCompositeIdentifiable1);
         assertNotEquals(new BarCompositeIdentifiable(null), new BarCompositeIdentifiable(null));
     }

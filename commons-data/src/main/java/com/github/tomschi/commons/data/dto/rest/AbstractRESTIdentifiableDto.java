@@ -49,9 +49,12 @@ public abstract class AbstractRESTIdentifiableDto<T extends Serializable> implem
      */
     @Override
     public boolean equals(Object obj) {
-        if (getId() == null) return (this == obj);
-        return (this.getClass() == obj.getClass())
-                && this.getId().equals(((RESTIdentifiableDto<?>) obj).getId());
+        if (getId() != null) {
+            return (this.getClass() == obj.getClass())
+                    && this.getId().equals(((RESTIdentifiableDto<?>) obj).getId());
+        } else {
+            return super.equals(obj);
+        }
     }
 
     /**

@@ -22,6 +22,10 @@ package com.github.tomschi.commons.data;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public abstract class AbstractCompositeIdentifiable implements CompositeIdentifiable {
 
     private boolean isIdValuesValid(List<? extends Serializable> idList) {

@@ -22,12 +22,16 @@ package com.github.tomschi.commons.data.dbo;
 import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * @author Tomschi
+ */
 class AbstractCompositePrimaryKeyDboTest {
 
     @Test
@@ -48,14 +52,19 @@ class AbstractCompositePrimaryKeyDboTest {
     void testEquals() {
         List<? extends Serializable> primaryKeyList1 = Arrays.asList(1L, "KEY");
         List<? extends Serializable> primaryKeyList2 = Arrays.asList(1L, "KEY");
+        List<? extends Serializable> primaryKeyList3 = Arrays.asList(2L, "KEY");
 
         CompositePrimaryKeyDbo barCompositePrimaryKeyDbo1 = new BarCompositePrimaryKeyDbo(primaryKeyList1);
         CompositePrimaryKeyDbo barCompositePrimaryKeyDbo2 = new BarCompositePrimaryKeyDbo(primaryKeyList2);
+        CompositePrimaryKeyDbo barCompositePrimaryKeyDbo3 = new BarCompositePrimaryKeyDbo(primaryKeyList3);
 
         CompositePrimaryKeyDbo fooCompositePrimaryKeyDbo1 = new FooCompositePrimaryKeyDbo(primaryKeyList1);
 
         assertEquals(barCompositePrimaryKeyDbo1, barCompositePrimaryKeyDbo1);
         assertEquals(barCompositePrimaryKeyDbo1, barCompositePrimaryKeyDbo2);
+        assertNotEquals(barCompositePrimaryKeyDbo1, barCompositePrimaryKeyDbo3);
+        assertNotEquals(new BarCompositePrimaryKeyDbo(new ArrayList<>()), barCompositePrimaryKeyDbo1);
+        assertNotEquals(new BarCompositePrimaryKeyDbo(Arrays.asList(null, null)), barCompositePrimaryKeyDbo1);
         assertNotEquals(barCompositePrimaryKeyDbo1, fooCompositePrimaryKeyDbo1);
         assertNotEquals(new BarCompositePrimaryKeyDbo(null), new BarCompositePrimaryKeyDbo(null));
     }

@@ -32,10 +32,12 @@ class AbstractRESTIdentifiableDtoTest {
     void testEqualsHashCodeSuccess() {
         RESTIdentifiableDto<Long> first = new BarRESTIdentifiableDto(1L);
         RESTIdentifiableDto<Long> second = new BarRESTIdentifiableDto(1L);
+        RESTIdentifiableDto<Long> third = new BarRESTIdentifiableDto(null);
         assertTrue(first.equals(second));
         assertEquals(first.hashCode(), second.hashCode());
 
         assertTrue(first.equals(first));
+        assertFalse(third.equals(first));
         assertEquals(first.hashCode(), first.hashCode());
     }
 

@@ -22,10 +22,13 @@ package com.github.tomschi.commons.message;
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public final class MessageGenerator {
 
-    private MessageGenerator() {
-    }
+    private MessageGenerator() {}
 
     @Nonnull
     public static String getMessage(@Nonnull String message, @Nonnull Object... args) {

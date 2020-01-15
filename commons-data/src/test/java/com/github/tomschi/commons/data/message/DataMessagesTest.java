@@ -25,8 +25,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DataMessagesTest {
 
+    private static final String PARAM_ALREADY_EXISTS_MSG = "The parameter test with id 1 already exists.";
     private static final String PARAM_NOT_PERSIST_MSG = "The parameter test must be persisted first.";
     private static final String PARAM_PRODUCE_CYCLE_MSG = "The given parameters produces a cycle.";
+
+    @Test
+    void testParamAlreadyExistsMsg() {
+        assertEquals(PARAM_ALREADY_EXISTS_MSG, DataMessages.paramAlreadyExistsMsg("test", String.valueOf(1)));
+    }
 
     @Test
     void testParamNotPersistMsg() {

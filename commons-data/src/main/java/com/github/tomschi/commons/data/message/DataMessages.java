@@ -23,6 +23,10 @@ import com.github.tomschi.commons.message.MessageGenerator;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public final class DataMessages {
 
     private static final String PARAM_ALREADY_EXISTS_MSG = "The parameter {0} with id {1} already exists.";

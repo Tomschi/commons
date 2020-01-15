@@ -22,6 +22,10 @@ package com.github.tomschi.commons.data.dbo;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public interface CompositePrimaryKeyDbo extends DatabaseObject {
 
     List<? extends Serializable> getPrimaryKeyValues();

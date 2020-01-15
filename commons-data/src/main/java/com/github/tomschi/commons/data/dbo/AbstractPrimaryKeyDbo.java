@@ -21,6 +21,10 @@ package com.github.tomschi.commons.data.dbo;
 
 import java.io.Serializable;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public abstract class AbstractPrimaryKeyDbo<T extends Serializable> implements PrimaryKeyDbo<T> {
 
     private static final long serialVersionUID = 1L;

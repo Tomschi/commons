@@ -22,14 +22,33 @@ package com.github.tomschi.commons.lang;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
+/**
+ * A utility class for {@link Optional}.
+ *
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public final class OptionalUtils {
 
-    private OptionalUtils() {
-    }
+    private OptionalUtils() {}
 
+    /**
+     * This method can be used for implicit type casting of {@link Optional}'s. <br>
+     * <pre>
+     *
+     * For example:
+     *
+     * Optional<Integer> integer = Optional.of(1);
+     * Optional<Number> number = OptionalUtils.optionalOf(integer);
+     * </pre>
+     *
+     * @param optional An {@link Optional}.
+     * @param <T> The type of the optional.
+     * @return A {@link Optional} of type T.
+     */
     @Nonnull
     public static <T> Optional<T> optionalOf(@Nonnull Optional<? extends T> optional) {
-        return optional.isPresent() ? Optional.of(optional.get()) : Optional.empty();
+        return Optional.ofNullable(optional.orElse(null));
     }
 
 }

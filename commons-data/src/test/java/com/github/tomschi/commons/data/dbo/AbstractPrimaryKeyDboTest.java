@@ -24,6 +24,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * @author Tomschi
+ */
 class AbstractPrimaryKeyDboTest {
 
     @Test
@@ -40,11 +43,13 @@ class AbstractPrimaryKeyDboTest {
 
     @Test
     void testEquals() {
-        PrimaryKeyDbo<Long> barPrimaryKeyDbo = new BarPrimaryKeyDbo(1L);
+        PrimaryKeyDbo<Long> barPrimaryKeyDbo1 = new BarPrimaryKeyDbo(1L);
+        PrimaryKeyDbo<Long> barPrimaryKeyDbo2 = new BarPrimaryKeyDbo(2L);
         PrimaryKeyDbo<Long> fooPrimaryKeyDbo = new FooPrimaryKeyDbo(1L);
 
-        assertEquals(barPrimaryKeyDbo, barPrimaryKeyDbo);
-        assertNotEquals(barPrimaryKeyDbo, fooPrimaryKeyDbo);
+        assertEquals(barPrimaryKeyDbo1, barPrimaryKeyDbo1);
+        assertNotEquals(barPrimaryKeyDbo1, barPrimaryKeyDbo2);
+        assertNotEquals(barPrimaryKeyDbo1, fooPrimaryKeyDbo);
         assertNotEquals(new BarPrimaryKeyDbo(null), new BarPrimaryKeyDbo(null));
     }
 

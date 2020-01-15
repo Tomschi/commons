@@ -26,11 +26,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class MessagesTest {
 
     private static final String PARAM_NOT_NULL_MSG = "The given method parameter test must not be null.";
+    private static final String PARAM_NOT_NUMERIC_MSG = "The given method parameter test must be numeric.";
     private static final String PARAM_TYPE_NOT_SUPPORTED_MSG = "The type String of parameter test is not supported. Only types of Number are allowed.";
 
     @Test
     void testParamNotNullMsg() {
         assertEquals(PARAM_NOT_NULL_MSG, Messages.paramNotNullMsg("test"));
+    }
+
+    @Test
+    void testParamNotNumericMsg() {
+        assertEquals(PARAM_NOT_NUMERIC_MSG, Messages.paramNotNumericMsg("test"));
     }
 
     @Test

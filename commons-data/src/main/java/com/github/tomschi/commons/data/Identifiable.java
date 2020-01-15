@@ -21,6 +21,10 @@ package com.github.tomschi.commons.data;
 
 import java.io.Serializable;
 
+/**
+ * @since 0.2.1
+ * @author Tomschi
+ */
 public interface Identifiable<T extends Serializable> {
 
     /**
