@@ -12,7 +12,7 @@ ARTIFACTORY_URL="https://oss.jfrog.org/artifactory/oss-release-local/com/github/
 BINTRAY_URL="https://api.bintray.com/content/tomschi/oss-repo"
 
 if case $VERSION in *-SNAPSHOT) true;; *) false;; esac; then
-    echo "Skip bintray distribute, because it is a snapshot version."
+    echo "Skip distribution to bintray, because it is a snapshot version."
     exit 0
 fi
 
@@ -45,7 +45,7 @@ for project in $PROJECTS ; do
 
   if case $project in *-parent) true;; *) false;; esac; then
     FILE_NAME="$project-$VERSION.pom"
-    UPLOAD_URL="$BINTRAY_URL/$project/$VERSION/com/github/tomschi/$project/$FILE_NAME"
+    UPLOAD_URL="$BINTRAY_URL/$project/$VERSION/com/github/tomschi/$project/$VERSION/$FILE_NAME"
     echo "Upload: $UPLOAD_URL"
     curl -fs -T $FILE_NAME -u"${BINTRAY_USERNAME}":"${BINTRAY_PASSWORD}" $UPLOAD_URL > /dev/null
   fi
@@ -53,7 +53,7 @@ for project in $PROJECTS ; do
   if case $project in *-parent) false;; *) true;; esac; then
     for suffix in $SUFFIXES ; do
       FILE_NAME="$project-$VERSION$suffix"
-      UPLOAD_URL="$BINTRAY_URL/$project/$VERSION/com/github/tomschi/$project/$FILE_NAME"
+      UPLOAD_URL="$BINTRAY_URL/$project/$VERSION/com/github/tomschi/$project/$VERSION/$FILE_NAME"
       echo "Upload: $UPLOAD_URL"
       curl -fs -T $FILE_NAME -u"${BINTRAY_USERNAME}":"${BINTRAY_PASSWORD}" $UPLOAD_URL > /dev/null
     done
