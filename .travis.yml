@@ -8,8 +8,13 @@ after_success:
   - mvn coveralls:report -B
 
 deploy:
-  provider: script
-  script: "mvn deploy -DskipTests=true -B"
-  skip_cleanup: true
-  on:
-    branch: master
+  - provider: script
+    script: "mvn deploy -DskipTests=true -B"
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: bash scripts/distributeToBintray.sh || travis_terminate 1;
+    skip_cleanup: true
+    on:
+      branch: master
