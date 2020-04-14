@@ -26,8 +26,13 @@ import java.util.List;
  * @since 0.2.1
  * @author Tomschi
  */
-public interface CompositeIdentifiable {
+public interface CompositeIdentifiable extends Serializable {
 
+    /**
+     * The getter of the id values.
+     *
+     * @return A {@link List} of id values.
+     */
     List<? extends Serializable> getIdValues();
 
 }

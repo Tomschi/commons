@@ -31,8 +31,18 @@ import java.io.Serializable;
  */
 public interface PrimaryKeyDbo<T extends Serializable> extends DatabaseObject {
 
+    /**
+     * The getter of the primary key.
+     *
+     * @return The primary key.
+     */
     T getPrimaryKey();
 
+    /**
+     * The setter of the primary key.
+     *
+     * @param primaryKey The primary key to set.
+     */
     void setPrimaryKey(T primaryKey);
 
 }

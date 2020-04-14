@@ -19,7 +19,7 @@
  */
 package com.github.tomschi.commons.data.dto;
 
-import com.github.tomschi.commons.data.DataObject;
+import java.io.Serializable;
 
 /**
  * The interface {@link DataTransferObject} is the base interface for
@@ -28,5 +28,5 @@ import com.github.tomschi.commons.data.DataObject;
  * @since 0.1.0
  * @author Tomschi
  */
-public interface DataTransferObject extends DataObject {
+public interface DataTransferObject extends Serializable {
 }

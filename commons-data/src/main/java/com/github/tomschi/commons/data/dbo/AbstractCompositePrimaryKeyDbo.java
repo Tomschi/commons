@@ -21,6 +21,8 @@ package com.github.tomschi.commons.data.dbo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * @since 0.2.1
@@ -34,25 +36,49 @@ public abstract class AbstractCompositePrimaryKeyDbo implements CompositePrimary
         return idList != null && !idList.isEmpty() && !idList.contains(null);
     }
 
+    /**
+     * Returns a hash code value for the object. The value
+     * is generated with the hash code of the class name and
+     * the hash code of the primary key's. If the {@link List}
+     * of the primary key's contains <code>null</code>,
+     * {@link Object#hashCode()} is called.
+     *
+     * @return A hash code value for the object.
+     */
     @Override
     public int hashCode() {
-        List<? extends Serializable> primaryKeyList = getPrimaryKeyValues();
-        if (isPrimaryKeyValuesValid(primaryKeyList)) {
-            return (this.getClass().getName().hashCode() * 13) + primaryKeyList.stream().mapToInt(Object::hashCode).sum();
-        } else {
-            return super.hashCode();
+        if (isPrimaryKeyValuesValid(getPrimaryKeyValues())) {
+            Stream<Object> stream = Stream.concat(
+                    Stream.of(this.getClass().getName()),
+                    Stream.of(getPrimaryKeyValues().toArray()));
+            return Objects.hash(stream.toArray());
         }
+
+        return super.hashCode();
     }
 
+    /**
+     * Indicates if this object is equals to another object.
+     * For checking this equality the {@link List} of primary key's
+     * is used. Two objects are equal, if the given object
+     * is this object (<code>this == obj</code>) or the given
+     * object has the same class like this and both {@link List}
+     * of primary key's are equal. If the {@link List} of primary key's
+     * contains <code>null</code>, the method only check if the given
+     * object is this object.
+     *
+     * @param obj The reference object with which to compare.
+     * @return <code>True</code>, if obj equals <code>this</code>, else <code>false</code>.
+     */
     @Override
     public boolean equals(Object obj) {
         List<? extends Serializable> primaryKeyList = getPrimaryKeyValues();
         if (isPrimaryKeyValuesValid(primaryKeyList)) {
             return (this.getClass() == obj.getClass())
                     && primaryKeyList.equals(((CompositePrimaryKeyDbo) obj).getPrimaryKeyValues());
-        } else {
-            return super.equals(obj);
         }
+
+        return super.equals(obj);
     }
 
 }

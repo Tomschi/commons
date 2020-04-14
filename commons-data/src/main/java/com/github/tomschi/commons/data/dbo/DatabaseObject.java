@@ -19,7 +19,7 @@
  */
 package com.github.tomschi.commons.data.dbo;
 
-import com.github.tomschi.commons.data.DataObject;
+import java.io.Serializable;
 
 /**
  * The interface {@link DatabaseObject} is the base interface for
@@ -28,5 +28,5 @@ import com.github.tomschi.commons.data.DataObject;
  * @author Tomschi
  * @since 0.1.0
  */
-public interface DatabaseObject extends DataObject {
+public interface DatabaseObject extends Serializable {
 }

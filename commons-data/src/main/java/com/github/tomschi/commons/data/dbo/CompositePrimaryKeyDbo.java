@@ -28,6 +28,11 @@ import java.util.List;
  */
 public interface CompositePrimaryKeyDbo extends DatabaseObject {
 
+    /**
+     * The getter of the primary key values.
+     *
+     * @return A {@link List} of primary key values.
+     */
     List<? extends Serializable> getPrimaryKeyValues();
 
 }

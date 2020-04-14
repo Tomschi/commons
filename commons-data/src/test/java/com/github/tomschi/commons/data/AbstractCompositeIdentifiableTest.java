@@ -42,8 +42,9 @@ class AbstractCompositeIdentifiableTest {
         CompositeIdentifiable barCompositeIdentifiable = new BarCompositeIdentifiable(idList1);
         CompositeIdentifiable fooCompositeIdentifiable = new FooCompositeIdentifiable(idList2);
 
-        int hashCode = BarCompositeIdentifiable.class.getName().hashCode() * 13 + idList1.stream().mapToInt(Object::hashCode).sum();
-        assertEquals(hashCode, barCompositeIdentifiable.hashCode());
+        assertEquals(barCompositeIdentifiable.hashCode(), barCompositeIdentifiable.hashCode());
+        assertEquals(new BarCompositeIdentifiable(idList1).hashCode(), new BarCompositeIdentifiable(idList1).hashCode());
+        assertEquals(new BarCompositeIdentifiable(idList1).hashCode(), new BarCompositeIdentifiable(idList2).hashCode());
         assertNotEquals(barCompositeIdentifiable.hashCode(), fooCompositeIdentifiable.hashCode());
         assertNotEquals(new BarCompositeIdentifiable(null).hashCode(), new BarCompositeIdentifiable(null).hashCode());
     }
@@ -70,9 +71,11 @@ class AbstractCompositeIdentifiableTest {
         assertNotEquals(new BarCompositeIdentifiable(null), new BarCompositeIdentifiable(null));
     }
 
-    private class BarCompositeIdentifiable extends AbstractCompositeIdentifiable {
+    private static class BarCompositeIdentifiable extends AbstractCompositeIdentifiable {
 
-        private List<? extends Serializable> idValues;
+        private static final long serialVersionUID = 1313684911625298411L;
+
+        private final List<? extends Serializable> idValues;
 
         private BarCompositeIdentifiable(List<? extends Serializable> idValues) {
             this.idValues = idValues;
@@ -85,9 +88,11 @@ class AbstractCompositeIdentifiableTest {
 
     }
 
-    private class FooCompositeIdentifiable extends AbstractCompositeIdentifiable {
+    private static class FooCompositeIdentifiable extends AbstractCompositeIdentifiable {
 
-        private List<? extends Serializable> idValues;
+        private static final long serialVersionUID = -952008689726740335L;
+
+        private final List<? extends Serializable> idValues;
 
         private FooCompositeIdentifiable(List<? extends Serializable> idValues) {
             this.idValues = idValues;

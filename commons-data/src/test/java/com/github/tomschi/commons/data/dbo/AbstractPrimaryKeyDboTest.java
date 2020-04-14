@@ -34,9 +34,8 @@ class AbstractPrimaryKeyDboTest {
         PrimaryKeyDbo<Long> barPrimaryKeyDbo = new BarPrimaryKeyDbo(1L);
         PrimaryKeyDbo<Long> fooPrimaryKeyDbo = new FooPrimaryKeyDbo(1L);
 
-        int hash = barPrimaryKeyDbo.getClass().getName().hashCode() * 13 + (Integer.valueOf(1).hashCode());
-        assertEquals(hash, barPrimaryKeyDbo.hashCode());
-
+        assertEquals(barPrimaryKeyDbo.hashCode(), barPrimaryKeyDbo.hashCode());
+        assertEquals(new BarPrimaryKeyDbo(1L).hashCode(), new BarPrimaryKeyDbo(1L).hashCode());
         assertNotEquals(barPrimaryKeyDbo.hashCode(), fooPrimaryKeyDbo.hashCode());
         assertNotEquals(new BarPrimaryKeyDbo(null).hashCode(), new BarPrimaryKeyDbo(null).hashCode());
     }
@@ -53,7 +52,7 @@ class AbstractPrimaryKeyDboTest {
         assertNotEquals(new BarPrimaryKeyDbo(null), new BarPrimaryKeyDbo(null));
     }
 
-    private class BarPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
+    private static class BarPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
 
         private static final long serialVersionUID = 8412755344352059966L;
 
@@ -75,7 +74,7 @@ class AbstractPrimaryKeyDboTest {
 
     }
 
-    private class FooPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
+    private static class FooPrimaryKeyDbo extends AbstractPrimaryKeyDbo<Long> {
 
         private static final long serialVersionUID = -9056338751575122354L;
 

@@ -34,9 +34,8 @@ class AbstractIdentifiableTest {
         Identifiable<Long> barIdentifiable = new BarIdentifiable(1L);
         Identifiable<Long> fooIdentifiable = new FooIdentifiable(1L);
 
-        int hash = barIdentifiable.getClass().getName().hashCode() * 13 + (Integer.valueOf(1).hashCode());
-        assertEquals(hash, barIdentifiable.hashCode());
-
+        assertEquals(barIdentifiable.hashCode(), barIdentifiable.hashCode());
+        assertEquals(new BarIdentifiable(1L).hashCode(), new BarIdentifiable(1L).hashCode());
         assertNotEquals(barIdentifiable.hashCode(), fooIdentifiable.hashCode());
         assertNotEquals(new BarIdentifiable(null).hashCode(), new BarIdentifiable(null).hashCode());
     }
@@ -53,7 +52,9 @@ class AbstractIdentifiableTest {
         assertNotEquals(new BarIdentifiable(null), new BarIdentifiable(null));
     }
 
-    private class BarIdentifiable extends AbstractIdentifiable<Long> {
+    private static class BarIdentifiable extends AbstractIdentifiable<Long> {
+
+        private static final long serialVersionUID = -3976745090255523586L;
 
         private Long id;
 
@@ -73,7 +74,9 @@ class AbstractIdentifiableTest {
 
     }
 
-    private class FooIdentifiable extends AbstractIdentifiable<Long> {
+    private static class FooIdentifiable extends AbstractIdentifiable<Long> {
+
+        private static final long serialVersionUID = 3179880241929901381L;
 
         private Long id;
 

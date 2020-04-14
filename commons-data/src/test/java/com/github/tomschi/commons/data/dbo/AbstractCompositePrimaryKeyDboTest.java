@@ -42,8 +42,9 @@ class AbstractCompositePrimaryKeyDboTest {
         CompositePrimaryKeyDbo barCompositePrimaryKeyDbo = new BarCompositePrimaryKeyDbo(primaryKeyList1);
         CompositePrimaryKeyDbo fooCompositePrimaryKeyDbo = new FooCompositePrimaryKeyDbo(primaryKeyList2);
 
-        int hashCode = BarCompositePrimaryKeyDbo.class.getName().hashCode() * 13 + primaryKeyList1.stream().mapToInt(Object::hashCode).sum();
-        assertEquals(hashCode, barCompositePrimaryKeyDbo.hashCode());
+        assertEquals(barCompositePrimaryKeyDbo.hashCode(), barCompositePrimaryKeyDbo.hashCode());
+        assertEquals(new BarCompositePrimaryKeyDbo(primaryKeyList1).hashCode(), new BarCompositePrimaryKeyDbo(primaryKeyList1).hashCode());
+        assertEquals(new BarCompositePrimaryKeyDbo(primaryKeyList1).hashCode(), new BarCompositePrimaryKeyDbo(primaryKeyList2).hashCode());
         assertNotEquals(barCompositePrimaryKeyDbo.hashCode(), fooCompositePrimaryKeyDbo.hashCode());
         assertNotEquals(new BarCompositePrimaryKeyDbo(null).hashCode(), new BarCompositePrimaryKeyDbo(null).hashCode());
     }
@@ -69,7 +70,7 @@ class AbstractCompositePrimaryKeyDboTest {
         assertNotEquals(new BarCompositePrimaryKeyDbo(null), new BarCompositePrimaryKeyDbo(null));
     }
 
-    private class BarCompositePrimaryKeyDbo extends AbstractCompositePrimaryKeyDbo {
+    private static class BarCompositePrimaryKeyDbo extends AbstractCompositePrimaryKeyDbo {
 
         private static final long serialVersionUID = -8211067700486693175L;
 
@@ -86,7 +87,7 @@ class AbstractCompositePrimaryKeyDboTest {
 
     }
 
-    private class FooCompositePrimaryKeyDbo extends AbstractCompositePrimaryKeyDbo {
+    private static class FooCompositePrimaryKeyDbo extends AbstractCompositePrimaryKeyDbo {
 
         private static final long serialVersionUID = -4128146155785214989L;
 

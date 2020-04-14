@@ -20,6 +20,7 @@
 package com.github.tomschi.commons.data.dbo;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @since 0.2.1
@@ -29,23 +30,43 @@ public abstract class AbstractPrimaryKeyDbo<T extends Serializable> implements P
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Returns a hash code value for the object. The value
+     * is generated with the hash code of the class name and
+     * the hash code of the primary key. If the primary key
+     * is <code>null</code>, {@link Object#hashCode()} is called.
+     *
+     * @return A hash code value for the object.
+     */
     @Override
     public int hashCode() {
         if (getPrimaryKey() != null) {
-            return (this.getClass().getName().hashCode() * 13) + getPrimaryKey().hashCode();
-        } else {
-            return super.hashCode();
+            return Objects.hash(this.getClass().getName(), getPrimaryKey());
         }
+
+        return super.hashCode();
     }
 
+    /**
+     * Indicates if this object is equals to another object.
+     * For checking this equality the primary key is used.
+     * Two objects are equal, if the given object is this
+     * object (<code>this == obj</code>) or the given object
+     * has the same class like this and both primary key's
+     * are equal. If id is <code>null</code>, the method
+     * only check if the given object is this object.
+     *
+     * @param obj The reference object with which to compare.
+     * @return <code>True</code>, if obj equals <code>this</code>, else <code>false</code>.
+     */
     @Override
     public boolean equals(Object obj) {
         if (getPrimaryKey() != null) {
             return (this.getClass() == obj.getClass())
                     && getPrimaryKey().equals(((PrimaryKeyDbo<?>) obj).getPrimaryKey());
-        } else {
-            return super.equals(obj);
         }
+
+        return super.equals(obj);
     }
 
 }
