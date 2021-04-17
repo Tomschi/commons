@@ -34,13 +34,13 @@ public final class OptionalUtils {
 
     /**
      * This method can be used for implicit type casting of {@link Optional}'s. <br>
-     * <pre>
      *
-     * For example:
+     * For example: <br>
      *
+     * {@code
      * Optional<Integer> integer = Optional.of(1);
      * Optional<Number> number = OptionalUtils.optionalOf(integer);
-     * </pre>
+     * }
      *
      * @param optional An {@link Optional}.
      * @param <T> The type of the optional.
